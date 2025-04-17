@@ -10,7 +10,8 @@ nav .btn {
     border-radius: 90px 90px 90px 90px;
 }
 
-nav .btn:hover, .search-bar-item:hover {
+nav .btn:hover, 
+.search-bar-item:hover {
     background-color: rgba(128, 128, 128, 0.418);
 }
 
@@ -47,8 +48,29 @@ nav .btn:hover, .search-bar-item:hover {
     background-color: #e0e0e0;
     margin: 0 -2px;
     z-index:10;
-  }
+}
 
 .nav-item :hover {
     background-color: yellow;
+}
+
+.category-nav {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    overflow-x: auto;
+    /* white-space: nowrap; */
+    gap: 24px;
+}
+.category-nav::-webkit-scrollbar {
+    display: none;
+}
+
+.category-nav .btn:hover {
+    background-color: rgba(255, 0, 0, 0.0);
+    filter: brightness(1);
+}
+
+.category-item {
+    filter: brightness(3);
 }

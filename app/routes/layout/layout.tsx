@@ -2,8 +2,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "app/routes/airbnbcss/stylesheet.css";
 import { PiAppStoreLogoBold, PiArticleThin, PiGlobe, PiHeartStraightBold, PiPersonSimpleCircleDuotone } from "react-icons/pi";
 import { Outlet } from 'react-router';
+import CategoryNav from '~/components/CategoryNav';
+import { useState } from 'react';
 
 export default function (){
+    const [activeSearchHome, setActiveSearchHome] =  useState(true);
     return (
         <div>
         <nav className="bg-light">
@@ -12,8 +15,8 @@ export default function (){
                     <button className="btn p-3"><PiAppStoreLogoBold /></button>
                 </div>
                 <div className="col-4 text-center p-3">
-                    <button className="btn">Domy</button>
-                    <button className="btn">Atrakcje</button>
+                    <button className="btn" onClick={() => setActiveSearchHome(true)}>Domy</button>
+                    <button className="btn" onClick={() => setActiveSearchHome(false)}>Atrakcje</button>
                 </div>
                 <div className="col-4 text-right p-2  d-flex align-items-center justify-content-end">
                     <button className="btn">Wynajmij swoj dom na Aribnb</button> 
@@ -32,20 +35,31 @@ export default function (){
                             </span>
 
                             <div className="divider"></div>
+                            {activeSearchHome ? (
+                            <>
+                                <span className="rounded-pill search-bar-item p-2 m-1">
+                                    <label htmlFor="przyjazd" >Przyjazd</label>
+                                    <input id="przyjazd" className="" placeholder="Dodaj daty" />
+                                </span>
 
-                            <span className="rounded-pill search-bar-item p-2 m-1">
-                                <label htmlFor="przyjazd" >Przyjazd</label>
-                                <input id="przyjazd" className="" placeholder="Dodaj daty" />
-                            </span>
-
-                            <div className="divider"></div>
+                                <div className="divider"></div>
+                                
+                                <span className="rounded-pill search-bar-item p-2 m-1">
+                                    <label htmlFor="wyjazd">Wyjazd</label>
+                                    <input id="wyjazd" className="" placeholder="Dodaj daty" />
+                                </span>
+                                <div className="divider" />
+                            </>
+                            ) : (
+                            <>
+                                <span className="rounded-pill search-bar-item p-2 m-1 me-4">
+                                    <label htmlFor="przyjazd" >Data</label>
+                                    <input id="przyjazd" className="" placeholder="Dodaj daty" />
+                                </span>
+                                <div className="divider" />
+                            </>
+                            )}
                             
-                            <span className="rounded-pill search-bar-item p-2 m-1">
-                                <label htmlFor="wyjazd">Wyjazd</label>
-                                <input id="wyjazd" className="" placeholder="Dodaj daty" />
-                            </span>
-                            
-                            <div className="divider" />
                             
                             <span className="rounded-pill search-bar-item p-2 m-1">
                                 <label  htmlFor="kto" className="me-2">Kto</label>
@@ -56,6 +70,10 @@ export default function (){
                     </div>
                 </div>
             </div>
+        <hr/>
+        <div className="d-flex align-items-center justify-content-center">
+            <CategoryNav />
+        </div>
         <hr/>
         </nav>
         <Outlet></Outlet>
