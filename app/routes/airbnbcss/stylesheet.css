@@ -1,49 +1,68 @@
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+nav .row {
+    --bs-gutter-x: 0rem;
+    --bs-gutter-y: 0rem;
+}
+
 nav .btn {
     border-radius: 90px 90px 90px 90px;
 }
 
 nav .btn:hover, 
-.search-bar-item:hover {
+.search-bar-item:hover,
+.language-item:hover,
+.lang-modal-option:hover {
     background-color: rgba(128, 128, 128, 0.200);
+}
+#rent-text {
+    font-size: 12px;
+    font-weight: 600;
 }
 .logo {
     color: red;
     font-size: xx-large;
 }
+.logo span {
+    display: none;
+    font-size: large;
+    font-weight: 700;
+}
+@media (min-width: 767px) {
+    .logo span {
+        display: inline;
+    }
+}
+.btn-profile {
+    font-size: x-large;
+}
+.btn-profile:hover {
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.329);
+}
 .search-bar {
     max-width: 1100px;
     width: 90%;
-    box-shadow: 2px 1px 18px 0px rgba(0,0,0,0.45);
+    box-shadow: 2px 1px 10px 0px rgba(0,0,0,0.45);
     border-radius: 90px 90px 90px 90px;
-    /* height: 70px; */
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     padding: 0px;
 }
-
 .search-bar-item {
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; */
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between;
-    align-items: center; */
     flex-grow: 1;
-    /* d-flex 
-    justify-content-between 
-    align-items-center 
-    flex-grow-1 */
 }
-
 .search-bar-item span {
     font-size: small;
     font-weight: 600;
     padding-left: 15px;
 }
-
 .search-bar-item input {
     width: 100%;
     background: transparent;
@@ -54,11 +73,9 @@ nav .btn:hover,
     text-align: left;
     padding-left: 15px;
 }
-
 .search-bar-item .btn {
     color: white
 }
-
 .divider {
     width: 1px;
     height: 40px;
@@ -66,7 +83,6 @@ nav .btn:hover,
     margin: 0 -2px;
     z-index:10;
 }
-
 .category-nav {
     display: flex;
     overflow-x: auto;
@@ -75,17 +91,132 @@ nav .btn:hover,
 .category-nav::-webkit-scrollbar {
     display: none;
 }
-
 .category-nav .btn:hover {
     background-color: rgba(255, 0, 0, 0);
     filter: brightness(0);
 }
-
 .category-item {
     filter: brightness(3);
 }
-
 .w33 {
     max-width: 33.555%;
     display: flex;
+}
+.atraction-item-card img {
+    border-radius: 20px 20px 20px 20px;
+}
+
+.atraction-item-card p,
+.atraction-item-card span {
+    margin-bottom: 0;
+    font-size: small;
+}
+.heart-btn {
+    border: 0;
+}
+.heart-btn:hover {
+    transform: scale(110%);
+}
+.client-choice-badge{
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.301);
+    border-radius: 20px 20px 20px 20px;
+    font-weight: 200;
+}
+
+.dropdown-menu {
+    box-shadow: 2px 1px 10px 0px rgba(0,0,0,0.45);
+    z-index: 1000;
+    min-width: 200px;
+    border: 0;
+}
+
+.dropdown-item {
+    font-size: small;
+    margin-bottom: 5px;
+}
+
+.dropdown-item:hover {
+    cursor: pointer;
+}
+.modal-dialog {
+    max-width: 1200px;
+    width: 90%;
+}
+@media (max-width: 576px) {
+    .modal-dialog {
+        width: 97%;
+    }
+}
+.modal-content {
+    border-radius: 40px 40px 40px 40px;
+}
+.modal-body {
+    max-height: 100vh;
+}
+.modal-content .btn-close {
+    padding: 10px;
+    margin-left: 0;
+}
+.form-check-input:checked
+{
+    background-color: black;
+    border-color: black;
+}
+.form-check-input:focus{
+    border-color: black;
+    box-shadow: none;
+}
+.language-item {
+    max-width: 150px;
+    width: 100%;
+    max-height: 50px;
+    height: 100%;
+    border: 1px;
+    border-color: black;
+    font-size: small;
+    padding: 0;
+    cursor: pointer;
+}
+.option-description {
+    filter: brightness(3);
+}
+.container-custom {
+    max-width: 1800px;
+    width: 100%;
+    margin: auto;
+    padding: 20px;
+}
+
+.language-pill {
+    max-width: 400px;
+    width: 100%;
+}
+.translate-description {
+    font-size: 13px;
+}
+.round-10 {
+    border-radius: 10px 10px 10px 10px;
+}
+
+.active-item {
+    position: relative;
+    font-weight: normal;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+.active-item.active 
+{
+    font-weight: 600;
+}
+.active-item.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 82%;
+    height: 2px;
+    background-color: black;
+    transform: translate(11%, 0)
 }

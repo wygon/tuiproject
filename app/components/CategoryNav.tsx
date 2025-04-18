@@ -2,9 +2,8 @@ import { categories } from "~/categories/categories";
 import CategoryItem from "./CategoryItem";
 
 export default function CategoryNav() {
-    categories
     return (
-    <div className="category-nav col-10">
+    <div className="category-nav container">
         {categories.map((category) =>
             <CategoryItem
             key={category.id}
