@@ -1,4 +1,4 @@
-export interface AtractionCardType {
+export interface AttractionCardType {
     id: number;
     picture: string;
     title: string;

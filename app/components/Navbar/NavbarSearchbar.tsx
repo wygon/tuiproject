@@ -7,7 +7,7 @@ interface NavbarSearchbarProps {
 export default function NavbarSearchbar ({ activeSearchHome } : NavbarSearchbarProps) {
     const [searchBarActive, setSearchBarActive] = useState(false);
     return (
-        <div className="search-bar bg-white rounded-pill"
+        <div className="search-bar bg-white rounded-pill d-sm-none d-md-flex"
             onFocus={() => setSearchBarActive(true)}
             onBlur={() => setSearchBarActive(false)}>
             <form className="d-flex align-items-center w-100" >

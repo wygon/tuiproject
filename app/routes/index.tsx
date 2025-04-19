@@ -1,9 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import AtractionComponent from "~/components/AtractionComponent";
+import AttractionComponent from "~/components/Attraction/AttractionComponent";
 
 export default function() {
   return (
-        <AtractionComponent />
-        // <>el</>
+        <AttractionComponent />
   );
 }

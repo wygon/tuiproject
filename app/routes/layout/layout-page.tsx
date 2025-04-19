@@ -1,17 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "app/routes/airbnbcss/stylesheet.css";
 import { Outlet } from 'react-router';
-import Navbar from '~/components/Navbar/Navbar';
+import NavbarSmall from '~/components/Navbar/NavbarSmall';
 import Footer from '~/components/Footer';
 
 export default function () {
     return (
         <div>
-            <div className='navi'>
-                <Navbar/>
-            </div>
+            <NavbarSmall/>
             <Outlet></Outlet>
-                <Footer />
+            <Footer />
         </div>
     );
 }

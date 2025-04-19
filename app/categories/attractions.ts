@@ -1,6 +1,6 @@
-import type { AtractionCardType } from "~/types/atractiontype";
+import type { AttractionCardType } from "~/types/attractiontype";
 
-export const atractions: AtractionCardType[] = [
+export const attractions: AttractionCardType[] = [
     {
         id: 1,
         title: 'Nasum',
