@@ -26,7 +26,7 @@ nav .btn {
     border-radius: 90px 90px 90px 90px;
 }
 .curved-mid {
-    border-radius: 40px 40px 40px 40px;
+    border-radius: 40px;
 }
 .trc {
     border-top-right-radius: 10px;
@@ -321,4 +321,13 @@ nav .btn:hover,
 }
 .rating-big {
     font-size: 100px;
+}
+.attraction-photo-nav {
+    z-index: 1000;
+    background-color: white;
+}
+.attraction-photo-nav a {
+   text-decoration: none ;
+   color: black;
+   display: inline-flex;
 }
