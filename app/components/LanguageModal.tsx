@@ -67,6 +67,7 @@ export default function LanguageModal(props: any) {
             aria-labelledby="contained-modal-title-vcenter"
             centered
             scrollable
+            className='lang-modal'
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
@@ -77,7 +78,7 @@ export default function LanguageModal(props: any) {
                     <span className={`lang-modal-option p-2 active-item round-10 ${isLangOn ? "active" : ""}`}
                         onClick={() => setIsLangOn(true)}
                     >
-                        Jezyk i region</span>
+                        Język i region</span>
                     <span className={`lang-modal-option p-2 active-item round-10 ${!isLangOn ? "active" : ""}`}
                         onClick={() => setIsLangOn(false)}
                         style={{ fontWeight: !isLangOn ? '600' : 'normal', borderBottom: '3px black' }}>
@@ -92,7 +93,7 @@ export default function LanguageModal(props: any) {
                                     <p className='m-0'>Tłumaczenie </p><IoLanguage />
                                 </span>
                                 <p className='m-0 option-description translate-description'>Automatycznie tłumacz opisy i recenzje na język Polski.</p>
-                                <Form.Switch className="position-absolute top-8 end-2"/>
+                                <Form.Switch className="position-absolute top-8 end-2" />
                             </div>
                         </div>
                         <h5>Sugerowane języki i regiony</h5>

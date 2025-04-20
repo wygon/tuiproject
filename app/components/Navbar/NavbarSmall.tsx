@@ -3,6 +3,7 @@ import { CgProfile } from "react-icons/cg";
 import { useState } from 'react';
 import LanguageModal from '~/components/LanguageModal';
 import NavbarSearchbarSmall from "./NavbarSearchbarSmall";
+import { TbBrandAirbnb } from "react-icons/tb";
 export default function NavbarSmall() {
     const [isLoginOpen, setIsLoginOpen] = useState(false);
     const [isLanguageModalShow, setIsLanguageModalShow] = useState(false);
@@ -12,15 +13,15 @@ export default function NavbarSmall() {
                 <nav className="bg-light">
                     <div className='row d-none d-sm-flex attraction-container p-0'>
                         <div className="col-2 d-flex align-items-center">
-                            <span className="p-3 ps-5 logo d-flex align-items-center">
-                                <PiAppStoreLogoBold />
+                            <span className="p-3 ps-2 logo-small d-flex align-items-center">
+                                <TbBrandAirbnb />
                                 <span>airbnb</span>
                             </span>
                         </div>
-                        <div className="col-5 p-3 d-flex align-items-center justify-content-center">
+                        <div className="col-7 p-3 d-flex align-items-center justify-content-center">
                             <NavbarSearchbarSmall />
                         </div>
-                        <div className="col-5 text-right p-2 d-flex align-items-center justify-content-end position-relative pe-5">
+                        <div className="col-3 text-right p-2 d-flex align-items-center justify-content-end position-relative pe-2">
                             <button className="btn" id="rent-text">Wynajmij swoj dom na Aribnb</button>
 
                             <button className="btn"

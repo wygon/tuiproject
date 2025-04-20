@@ -1,5 +1,8 @@
+import type { IconType } from "react-icons";
+
 export interface Category {
     id: string;
     name: string;
-    icon: string;
+    category: string;
+    icon: IconType;
 }

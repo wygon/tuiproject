@@ -6,19 +6,17 @@ import { PiBuildingApartment, PiFlag, PiHeartBold, PiIslandBold, PiMinus, PiPlus
 import { GiFeather, GiFeatherWound, GiLaurelCrown, GiNecklace } from "react-icons/gi";
 import { IoIosArrowDropdown, IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
 import { useState } from 'react';
-import { BiLogo99Designs, BiShield, BiTrophy } from 'react-icons/bi';
-import { MdCleaningServices, MdLuggage, MdMap, MdOutlineFamilyRestroom, MdSecurityUpdateGood } from 'react-icons/md';
+import { BiShield, BiTrophy } from 'react-icons/bi';
+import { MdCleaningServices,  MdMap, MdOutlineFamilyRestroom, MdSecurityUpdateGood } from 'react-icons/md';
 import { IoLocationSharp } from "react-icons/io5";
 import AttractionPhotoCarousel from '~/components/Attraction/AttractionPhotoCarousel';
 import { TbLuggage, TbToolsKitchen } from 'react-icons/tb';
 import RatingComponentSingle from '~/components/Attraction/AttractionRatingComponentSingle';
-import { BsChatDots, BsKey, BsLuggage, BsSafe, BsTag } from 'react-icons/bs';
+import { BsChatDots, BsKey, BsTag } from 'react-icons/bs';
 import OpinionComponent from '~/components/Attraction/AttractionOpinionComponent';
 import { CgProfile } from 'react-icons/cg';
-import { SiStardock } from 'react-icons/si';
 import { GoVerified } from 'react-icons/go';
-import { LuLuggage } from 'react-icons/lu';
-import { InView, useInView } from 'react-intersection-observer';
+import { useInView } from 'react-intersection-observer';
 
 export default function () {
     const [ddGuest, setDdGuest] = useState(false);
@@ -42,7 +40,6 @@ export default function () {
     const country = "Szwecja";
     const province = "Małopolskie";
     const reviews = Math.floor(Math.random() * (50 - 10) + 10);
-    
     return (
         <div className='attraction-container'>
             <div className="d-flex justify-content-between mb-3">
@@ -195,10 +192,10 @@ export default function () {
                         </Button>
                     </div>
                 </Col>
-                <Col md={5}>
+                <Col md={5} className='pe-1'>
                     <div className='position-sticky top-10 pt-10'>
-                        <div className='position-relative'>
-                            <Card style={{ width: '100%', padding: "10px", maxWidth: "300px", margin: "auto" }} className='bg-shadow'>
+                        <div className=''>
+                            <Card style={{ width: '100%', padding: "10px", maxWidth: "300px", marginLeft: "auto"}} className='bg-shadow'>
                                 <Card.Title className='ps-3 pt-2'>
                                     {price} zł noc
                                 </Card.Title>
@@ -292,7 +289,7 @@ export default function () {
                                     </span>
                                 </Card.Body>
                             </Card>
-                            <span className='d-flex justify-content-center align-items-center gap-2 '><PiFlag /> <span className='text-decoration-underline'>Zgłoś tą ofertę</span></span>
+                            <div style={{ width: '100%', padding: "10px", maxWidth: "300px", marginLeft: "auto"}} className='d-flex justify-content-center align-items-center'><PiFlag /> <span className='text-decoration-underline ms-1'>Zgłoś tą ofertę</span></div>
                         </div>
                     </div>
                 </Col>
@@ -356,7 +353,6 @@ export default function () {
                 </Col>
             </Row>
             <hr />
-
             <div id="location">
                 <h4 className='mt-5 mb-4'>Gdzie się zatrzymasz</h4>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3208.7599215165983!2d20.686847976899063!3d49.60032934820832!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473de527c4c967d1%3A0x4656f90ca24683d9!2sWy%C5%BCsza%20Szko%C5%82a%20Biznesu%20-%20National%20Louis%20University!5e1!3m2!1spl!2spl!4v1745092944967!5m2!1spl!2spl"
@@ -382,7 +378,7 @@ export default function () {
                                     <GoVerified className='position-absolute right-0 bottom-0 border rounded-circle bg-danger h3 text-white bg-shadow p-1' />
                                 </div>
                                 <p className='d-flex justify-content-center m-0 h3'>{ownername}</p>
-                                <p className='d-flex justify-content-center align-items-center m-0 fs-small fw-500'><BiTrophy /> Superhost</p>
+                                <p className='d-flex justify-content-center align-items-center m-0 fs-small fw-500'><BiTrophy className='me-1'/> Superhost</p>
                             </div>
                         </Col>
                         <Col sm={5} className='fw-500 h5 m-0'>

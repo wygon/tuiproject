@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { PiHeartBold, PiHeartFill, PiStarFill } from "react-icons/pi";
 import { useState } from "react";
 import { GiTrophyCup } from "react-icons/gi";
+import { Link } from "react-router";
 interface AttractionItemCardProps {
     attraction: AttractionCardType;
 }
@@ -11,7 +12,7 @@ export default function AtractionItemCard({ attraction }: AttractionItemCardProp
     return (
         <div className="atraction-item-card mb-3">
             <div className="position-relative">
-                <img src={`https://picsum.photos/id/${attraction.picture}/200`} className="img-fluid w-100" alt="image" />
+            <img src={`https://picsum.photos/id/${attraction.picture}/200`} className="img-fluid w-100" alt="image" />
                 <button className="btn position-absolute top-0 end-0 p-2 heart-btn" onClick={() => setLike(!isLike)}>
                     {!isLike ? 
                     (
