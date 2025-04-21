@@ -3,8 +3,11 @@ export interface AttractionCardType {
     picture: string;
     title: string;
     country: string;
+    province: string;
     description: string;
     owner: string;
     rating: number;
     price: string;
+    reviews: number;
+    ownerId: number;
 }

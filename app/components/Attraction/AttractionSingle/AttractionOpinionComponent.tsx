@@ -1,5 +1,6 @@
 import { Card, CardBody, CardText, CardTitle } from "react-bootstrap";
 import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
+import RatingStars from "~/components/RatingStars";
 import type { Opinion } from "~/types/opiniontype";
 
 interface OpinionProps {
@@ -17,12 +18,8 @@ export default function OpinionComponent({ opinion }: OpinionProps) {
             </CardTitle>
             <CardText className="d-flex m-0">
                 <div className='d-flex align-items-center'>
-                    {opinion.rating > 0.5 ? (opinion.rating > 1 ? (<IoIosStar style={{ fontSize: "10px" }} />) : (<IoIosStarHalf style={{ fontSize: "10px" }} />)) : ( <IoIosStarOutline style={{ fontSize: "10px" }}/>)}
-                    {opinion.rating > 1.5 ? (opinion.rating > 2 ? (<IoIosStar style={{ fontSize: "10px" }} />) : (<IoIosStarHalf style={{ fontSize: "10px" }} />)) : ( <IoIosStarOutline style={{ fontSize: "10px" }}/>)}
-                    {opinion.rating > 2.5 ? (opinion.rating > 3 ? (<IoIosStar style={{ fontSize: "10px" }} />) : (<IoIosStarHalf style={{ fontSize: "10px" }} />)) : ( <IoIosStarOutline style={{ fontSize: "10px" }}/>)}
-                    {opinion.rating > 3.5 ? (opinion.rating > 4 ? (<IoIosStar style={{ fontSize: "10px" }} />) : (<IoIosStarHalf style={{ fontSize: "10px" }} />)) : ( <IoIosStarOutline style={{ fontSize: "10px" }}/>)}
-                    {opinion.rating > 4.5 ? (opinion.rating > 5 ? (<IoIosStar style={{ fontSize: "10px" }} />) : (<IoIosStarHalf style={{ fontSize: "10px" }} />)) : ( <IoIosStarOutline style={{ fontSize: "10px" }}/>)}
-                <span className="fs-small fw-500 ms-1"> - {opinion.date}</span>
+                    <RatingStars rating={ opinion.rating } />
+                    <span className="fs-small fw-500 ms-1"> - {opinion.date}</span>
                 </div>
             </CardText>
             <CardText>

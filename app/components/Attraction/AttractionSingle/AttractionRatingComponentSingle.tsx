@@ -1,3 +1,4 @@
+import { Col } from "react-bootstrap";
 import type { Rating } from "~/types/ratingtype";
 
 interface RatingComponentSingleProps {
@@ -5,7 +6,7 @@ interface RatingComponentSingleProps {
 }
 export default function RatingComponentSingle({ rating }: RatingComponentSingleProps) {
     return (
-    <div className="rating-single p-2 pt-1">
+    <Col className="rating-single p-2 pt-1">
         <span className="fs-small fw-500">
                 {rating.name}
             <p>
@@ -15,6 +16,6 @@ export default function RatingComponentSingle({ rating }: RatingComponentSingleP
         <span className="h4 m-0">
             {rating.icon}
         </span>
-    </div>
+    </Col>
     );
 }

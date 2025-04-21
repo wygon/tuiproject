@@ -9,7 +9,10 @@ export const attractions: AttractionCardType[] = [
         description: 'Widok na góry i jezioro',
         owner: 'Gospodaż jest osoba prywatna',
         rating: 4.32,
-        price: '123'
+        price: '123',
+        province: 'Skåne',
+        reviews: 37,
+        ownerId: 5
     },
     {
         id: 2,
@@ -19,7 +22,10 @@ export const attractions: AttractionCardType[] = [
         description: 'Widok na góry',
         owner: 'Gospodaż jest firma',
         rating: 5,
-        price: '1235'
+        price: '1235',
+        province: 'Małopolskie',
+        reviews: 42,
+        ownerId: 2
     },
     {
         id: 3,
@@ -29,7 +35,10 @@ export const attractions: AttractionCardType[] = [
         description: 'Widok na doline',
         owner: 'Gospodaż jest osoba prywatna',
         rating: 2,
-        price: '500'
+        price: '500',
+        province: 'Małopolskie',
+        reviews: 8,
+        ownerId: 7
     },
     {
         id: 4,
@@ -39,7 +48,10 @@ export const attractions: AttractionCardType[] = [
         description: 'Apartament w centrum miasta',
         owner: 'Gospodaż jest osoba prywatna',
         rating: 4.8,
-        price: '650'
+        price: '650',
+        province: 'Małopolskie',
+        reviews: 45,
+        ownerId: 3
     },
     {
         id: 5,
@@ -49,7 +61,10 @@ export const attractions: AttractionCardType[] = [
         description: 'Apartament z widokiem na morze',
         owner: 'Gospodaż jest firma',
         rating: 4.5,
-        price: '1800'
+        price: '1800',
+        province: 'Stockholm',
+        reviews: 29,
+        ownerId: 8
     },
     {
         id: 6,
@@ -59,7 +74,10 @@ export const attractions: AttractionCardType[] = [
         description: 'Apartament w Starym Mieście',
         owner: 'Gospodaż jest osoba prywatna',
         rating: 4.2,
-        price: '450'
+        price: '450',
+        province: 'Pomorskie',
+        reviews: 18,
+        ownerId: 4
     },
     {
         id: 7,
@@ -69,7 +87,10 @@ export const attractions: AttractionCardType[] = [
         description: 'Domek nad jeziorem',
         owner: 'Gospodaż jest firma',
         rating: 3.9,
-        price: '950'
+        price: '950',
+        province: 'Västra Götaland',
+        reviews: 23,
+        ownerId: 1
     },
     {
         id: 8,
@@ -79,7 +100,10 @@ export const attractions: AttractionCardType[] = [
         description: 'Apartament blisko Rynku',
         owner: 'Gospodaż jest osoba prywatna',
         rating: 4.7,
-        price: '520'
+        price: '520',
+        province: 'Małopolskie',
+        reviews: 47,
+        ownerId: 9
     },
     {
         id: 9,
@@ -89,7 +113,10 @@ export const attractions: AttractionCardType[] = [
         description: 'Nowoczesne studio w centrum',
         owner: 'Gospodaż jest firma',
         rating: 4.1,
-        price: '870'
+        price: '870',
+        province: 'Skåne',
+        reviews: 16,
+        ownerId: 6
     },
     {
         id: 10,
@@ -99,7 +126,10 @@ export const attractions: AttractionCardType[] = [
         description: 'Apartament z tarasem',
         owner: 'Gospodaż jest osoba prywatna',
         rating: 4.3,
-        price: '380'
+        price: '380',
+        province: 'Dolnośląskie',
+        reviews: 31,
+        ownerId: 10
     },
     {
         id: 11,
@@ -109,7 +139,10 @@ export const attractions: AttractionCardType[] = [
         description: 'Historyczny dom w centrum',
         owner: 'Gospodaż jest firma',
         rating: 4.6,
-        price: '1100'
+        price: '1100',
+        province: 'Uppsala',
+        reviews: 24,
+        ownerId: 5
     },
     {
         id: 12,
@@ -119,7 +152,10 @@ export const attractions: AttractionCardType[] = [
         description: 'Mieszkanie blisko Starego Rynku',
         owner: 'Gospodaż jest osoba prywatna',
         rating: 3.8,
-        price: '340'
+        price: '340',
+        province: 'Wielkopolskie',
+        reviews: 19,
+        ownerId: 2
     },
     {
         id: 13,
@@ -129,7 +165,10 @@ export const attractions: AttractionCardType[] = [
         description: 'Domek z widokiem na zorzę polarną',
         owner: 'Gospodaż jest firma',
         rating: 4.9,
-        price: '2200'
+        price: '2200',
+        province: 'Norrbotten',
+        reviews: 33,
+        ownerId: 7
     },
     {
         id: 14,
@@ -139,7 +178,10 @@ export const attractions: AttractionCardType[] = [
         description: 'Domek w górach z sauną',
         owner: 'Gospodaż jest osoba prywatna',
         rating: 4.4,
-        price: '580'
+        price: '580',
+        province: 'Śląskie',
+        reviews: 26,
+        ownerId: 3
     },
     {
         id: 15,
@@ -149,7 +191,10 @@ export const attractions: AttractionCardType[] = [
         description: 'Apartament w centrum uniwersyteckim',
         owner: 'Gospodaż jest firma',
         rating: 4.0,
-        price: '780'
+        price: '780',
+        province: 'Skåne',
+        reviews: 12,
+        ownerId: 8
     },
     {
         id: 16,
@@ -159,7 +204,10 @@ export const attractions: AttractionCardType[] = [
         description: 'Apartament blisko plaży',
         owner: 'Gospodaż jest osoba prywatna',
         rating: 4.6,
-        price: '720'
+        price: '720',
+        province: 'Pomorskie',
+        reviews: 39,
+        ownerId: 4
     },
     {
         id: 17,
@@ -169,7 +217,10 @@ export const attractions: AttractionCardType[] = [
         description: 'Dom nad jeziorem Vättern',
         owner: 'Gospodaż jest firma',
         rating: 4.2,
-        price: '900'
+        price: '900',
+        province: 'Jönköping',
+        reviews: 22,
+        ownerId: 1
     },
     {
         id: 18,
@@ -179,7 +230,10 @@ export const attractions: AttractionCardType[] = [
         description: 'Apartament blisko wyciągów narciarskich',
         owner: 'Gospodaż jest osoba prywatna',
         rating: 4.5,
-        price: '490'
+        price: '490',
+        province: 'Małopolskie',
+        reviews: 35,
+        ownerId: 9
     },
     {
         id: 19,
@@ -189,7 +243,10 @@ export const attractions: AttractionCardType[] = [
         description: 'Apartament z widokiem na Danię',
         owner: 'Gospodaż jest firma',
         rating: 3.7,
-        price: '830'
+        price: '830',
+        province: 'Skåne',
+        reviews: 14,
+        ownerId: 6
     },
     {
         id: 20,
@@ -199,7 +256,10 @@ export const attractions: AttractionCardType[] = [
         description: 'Domek w stylu góralskim',
         owner: 'Gospodaż jest osoba prywatna',
         rating: 4.3,
-        price: '550'
+        price: '550',
+        province: 'Śląskie',
+        reviews: 28,
+        ownerId: 10
     },
     {
         id: 21,
@@ -209,7 +269,10 @@ export const attractions: AttractionCardType[] = [
         description: 'Mieszkanie w zabytkowej kamienicy',
         owner: 'Gospodaż jest firma',
         rating: 4.1,
-        price: '750'
+        price: '750',
+        province: 'Örebro',
+        reviews: 17,
+        ownerId: 5
     },
     {
         id: 22,
@@ -219,7 +282,10 @@ export const attractions: AttractionCardType[] = [
         description: 'Apartament z widokiem na morze',
         owner: 'Gospodaż jest osoba prywatna',
         rating: 4.4,
-        price: '600'
+        price: '600',
+        province: 'Zachodniopomorskie',
+        reviews: 41,
+        ownerId: 2
     },
     {
         id: 23,
@@ -229,6 +295,9 @@ export const attractions: AttractionCardType[] = [
         description: 'Nowoczesny apartament w centrum',
         owner: 'Gospodaż jest firma',
         rating: 3.9,
-        price: '820'
+        price: '820',
+        province: 'Östergötland',
+        reviews: 11,
+        ownerId: 7
     }
 ]
