@@ -1,22 +1,23 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
-import { Alert, AlertLink, Button, Card, Col, Row } from 'react-bootstrap';
+import { Alert, AlertLink, Button, Card, Col, Dropdown, DropdownButton, DropdownToggle, Row } from 'react-bootstrap';
 import { FiShare } from "react-icons/fi";
 import { PiBuildingApartment, PiFlag, PiHeartBold, PiIslandBold, PiMinus, PiPlus, PiSecurityCameraBold, PiSecurityCameraDuotone, PiWifiHigh } from 'react-icons/pi';
 import { GiFeather, GiFeatherWound, GiLaurelCrown, GiNecklace } from "react-icons/gi";
 import { IoIosArrowDropdown, IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
 import { useState } from 'react';
 import { BiShield, BiTrophy } from 'react-icons/bi';
-import { MdCleaningServices,  MdMap, MdOutlineFamilyRestroom, MdSecurityUpdateGood } from 'react-icons/md';
+import { MdCleaningServices, MdMap, MdOutlineFamilyRestroom, MdSecurityUpdateGood } from 'react-icons/md';
 import { IoLocationSharp } from "react-icons/io5";
-import AttractionPhotoCarousel from '~/components/Attraction/AttractionPhotoCarousel';
+import AttractionPhotoCarousel from '~/components/Attraction/AttractionSingle/AttractionPhotoCarousel';
 import { TbLuggage, TbToolsKitchen } from 'react-icons/tb';
-import RatingComponentSingle from '~/components/Attraction/AttractionRatingComponentSingle';
+import RatingComponentSingle from '~/components/Attraction/AttractionSingle/AttractionRatingComponentSingle';
 import { BsChatDots, BsKey, BsTag } from 'react-icons/bs';
-import OpinionComponent from '~/components/Attraction/AttractionOpinionComponent';
+import OpinionComponent from '~/components/Attraction/AttractionSingle/AttractionOpinionComponent';
 import { CgProfile } from 'react-icons/cg';
 import { GoVerified } from 'react-icons/go';
 import { useInView } from 'react-intersection-observer';
+import ImgTextPill from '~/components/ImgTextPill';
 
 export default function () {
     const [ddGuest, setDdGuest] = useState(false);
@@ -24,8 +25,8 @@ export default function () {
     const [kidsNumber, increaseKNumber] = useState(0);
     const [childrenNumber, increaseCNumber] = useState(0);
     const [petNumber, increasePNumber] = useState(0);
-    const [refPictureVisible, pictureVisible] = useInView({threshold: 0})
-    const [refReservation, reservationVisible] = useInView({threshold: 0})
+    const [refPictureVisible, pictureVisible] = useInView({ threshold: 0 })
+    const [refReservation, reservationVisible] = useInView({ threshold: 0 })
     const price = Math.floor(Math.random() * (1200 - 300) + 300);
     const cleaningFee = 300;
     const now = new Date(Date.now());
@@ -86,18 +87,18 @@ export default function () {
                     <Row className={`${reservationVisible && 'd-none'} d-flex align-items-center`}>
                         <Col>
                             <span>{price} zł noc</span>
-                            <p className='m-0 d-flex align-items-center' style={{ fontSize: "11px" }}><span className='d-flex align-items-center me-1'><IoIosStar style={{ fontSize: "10px"}} />{rating.toFixed(2)}</span> - <span className='option-description ms-1'>{reviews} recenzji</span></p>
+                            <p className='m-0 d-flex align-items-center' style={{ fontSize: "11px" }}><span className='d-flex align-items-center me-1'><IoIosStar style={{ fontSize: "10px" }} />{rating.toFixed(2)}</span> - <span className='option-description ms-1'>{reviews} recenzji</span></p>
                         </Col>
                         <Col>
-                        <Button className={`bg-danger border border-0 fw-500 ps-4 pe-4 p-2`}>
-                            <span>Rezerwuj</span>
-                        </Button>            
+                            <Button className={`bg-danger border border-0 fw-500 ps-4 pe-4 p-2`}>
+                                <span>Rezerwuj</span>
+                            </Button>
                         </Col>
                     </Row>
                 </div>
                 <hr className='mt-0' />
             </div>
-            
+
             <Row>
                 <Col md={7}>
                     <h4 className='mb-0'>Cały obiekt - dom w: {title}, {country}</h4>
@@ -195,7 +196,7 @@ export default function () {
                 <Col md={5} className='pe-1'>
                     <div className='position-sticky top-10 pt-10'>
                         <div className=''>
-                            <Card style={{ width: '100%', padding: "10px", maxWidth: "300px", marginLeft: "auto"}} className='bg-shadow'>
+                            <Card style={{ width: '100%', padding: "10px", maxWidth: "300px", marginLeft: "auto" }} className='bg-shadow'>
                                 <Card.Title className='ps-3 pt-2'>
                                     {price} zł noc
                                 </Card.Title>
@@ -211,68 +212,75 @@ export default function () {
                                                 <p className='m-0'>{date5Now}</p>
                                             </div>
                                         </div>
-                                        {/* <div className="p-2 w-100 position-relative" onClick={() => setDdGuest(!ddGuest)}> */}
-                                        <div className="p-2 w-100 position-relative" onClick={() => setDdGuest(true)} onBlur={() => setDdGuest(false)}>
-                                            <span>Goście</span>
-                                            <p className='m-0'>{guestNumber + kidsNumber} gość{childrenNumber > 0 && ", " + childrenNumber + " małe dzieci"} {petNumber > 0 && ", " + petNumber + " zwierzęta"}</p>
-                                            {!ddGuest ? (
-                                                <RiArrowDropDownLine className='position-absolute top-2 end-0 h1' />
-                                            ) : (
-                                                <RiArrowDropUpLine className='position-absolute top-2 end-0 h1' />
-                                            )}
-                                            <div className={`dropdown-menu position-absolute top-15 ${ddGuest && "show"}`}>
-                                                <span className="dropdown-item d-flex justify-content-between align-items-center">
+                                        <Dropdown autoClose="outside" drop='down-centered' id='priceCard'>
+                                            <DropdownToggle variant={"white"} className='w-100 border border-0 p-2 position-relative'>
+                                                <span className='d-flex fs-small fw-500'>Goście</span>
+                                                <p className='m-0 d-flex fs-small'>{guestNumber + kidsNumber} gość{childrenNumber > 0 && ", " + childrenNumber + " małe dzieci"}{petNumber > 0 && ", " + petNumber + " zwierzęta"}</p>
+                                            </DropdownToggle>
+                                            <Dropdown.Menu className='p-1 pt-2'>
+                                                <Dropdown.Item className='d-flex justify-content-between'>
                                                     <span>
                                                         <p className='m-0 fw-500'>Dorośli</p>
-                                                        Od 13 lat
+                                                        <small>Od 13 lat</small>
                                                     </span>
-                                                    <div className='d-flex'>
-                                                        <span className={`p-2 border rounded-circle ${guestNumber < 2 && "opacity-20 pointer-events-none"}`} onClick={() => increaseGNumber(guestNumber - 1)}><PiMinus /></span>
-                                                        <span className='p-1 fw-500'>{guestNumber}</span>
-                                                        <span className={`p-2 border rounded-circle ${guestNumber + kidsNumber > 5 && "opacity-50 pointer-events-none"}`} onClick={() => increaseGNumber(guestNumber + 1)}><PiPlus /></span>
+                                                    <div className='d-flex align-items-center'>
+                                                        <Button variant='white' className={`p-2 border rounded-circle ${guestNumber < 2 && "disabled"}`} onClick={() => increaseGNumber(guestNumber - 1)}><PiMinus size={13} /></Button>
+                                                        <span className='p-2 fw-500'>{guestNumber}</span>
+                                                        <Button variant='white' className={`p-2 border rounded-circle ${guestNumber + kidsNumber > 5 && "disabled"}`} onClick={() => increaseGNumber(guestNumber + 1)}><PiPlus size={13} /></Button>
                                                     </div>
-                                                </span>
-                                                <span className="dropdown-item d-flex justify-content-between align-items-center">
+
+                                                </Dropdown.Item>
+                                                <Dropdown.Item className='d-flex justify-content-between'>
                                                     <span>
                                                         <p className='m-0 fw-500'>Dzieci</p>
-                                                        Od 2 do 12 lat
+                                                        <small>Od 2 do 12 lat</small>
                                                     </span>
-                                                    <div className='d-flex'>
-                                                        <span className={`p-2 border rounded-circle ${kidsNumber < 1 && "opacity-50 pointer-events-none"}`} onClick={() => increaseKNumber(kidsNumber - 1)}><PiMinus /></span>
-                                                        <span className='p-1 fw-500'>{kidsNumber}</span>
-                                                        <span className={`p-2 border rounded-circle ${kidsNumber + guestNumber > 5 && "opacity-50 pointer-events-none"}`} onClick={() => increaseKNumber(kidsNumber + 1)}><PiPlus /></span>
+                                                    <div className='d-flex align-items-center'>
+                                                        <Button variant='white' className={`p-2 border rounded-circle ${kidsNumber < 1 && "disabled"}`} onClick={() => increaseKNumber(kidsNumber - 1)}><PiMinus size={13} /></Button>
+                                                        <span className='p-2 fw-500'>{kidsNumber}</span>
+                                                        <Button variant='white' className={`p-2 border rounded-circle ${guestNumber + kidsNumber > 5 && "disabled"}`} onClick={() => increaseKNumber(kidsNumber + 1)}><PiPlus size={13} /></Button>
                                                     </div>
-                                                </span>
-                                                <span className="dropdown-item d-flex justify-content-between align-items-center">
+
+                                                </Dropdown.Item>
+                                                <Dropdown.Item className='d-flex justify-content-between'>
                                                     <span>
                                                         <p className='m-0 fw-500'>Małe dzieci</p>
-                                                        Poniżej 2 lat
+                                                        <small>Poniżej 2 lat</small>
                                                     </span>
-                                                    <div className='d-flex'>
-                                                        <span className={`p-2 border rounded-circle ${childrenNumber < 1 && "opacity-50 pointer-events-none"}`} onClick={() => increaseCNumber(childrenNumber - 1)}><PiMinus /></span>
-                                                        <span className='p-1 fw-500'>{childrenNumber}</span>
-                                                        <span className={`p-2 border rounded-circle ${childrenNumber > 5 && "opacity-50 pointer-events-none"}`} onClick={() => increaseCNumber(childrenNumber + 1)}><PiPlus /></span>
+                                                    <div className='d-flex align-items-center'>
+                                                        <Button variant='white' className={`p-2 border rounded-circle ${childrenNumber < 1 && "disabled"}`} onClick={() => increaseCNumber(childrenNumber - 1)}><PiMinus size={13} /></Button>
+                                                        <span className='p-2 fw-500'>{childrenNumber}</span>
+                                                        <Button variant='white' className={`p-2 border rounded-circle ${childrenNumber > 5 && "disabled"}`} onClick={() => increaseCNumber(childrenNumber + 1)}><PiPlus size={13} /></Button>
                                                     </div>
-                                                </span>
-                                                <span className="dropdown-item d-flex justify-content-between align-items-center">
+
+                                                </Dropdown.Item>
+                                                <Dropdown.Item className='d-flex justify-content-between'>
                                                     <span>
                                                         <p className='m-0 fw-500'>Zwierzęta</p>
-                                                        Przyjeżdżasz ze zwierzęciem przewodnikiem?
+                                                        <small className='text-wrap text-decoration-underline fw-500'>Przyjeżdżasz ze zwierzęciem przewodnikiem?</small>
                                                     </span>
-                                                    <div className='d-flex'>
-                                                        <span className={`p-2 border rounded-circle ${petNumber < 1 && "opacity-50 pointer-events-none"}`} onClick={() => increasePNumber(petNumber - 1)}><PiMinus /></span>
-                                                        <span className='p-1 fw-500'>{petNumber}</span>
-                                                        <span className={`p-2 border rounded-circle ${petNumber > 3 && "opacity-50 pointer-events-none"}`} onClick={() => increasePNumber(petNumber + 1)}><PiPlus /></span>
+                                                    <div className='d-flex align-items-center'>
+                                                        <Button variant='white' className={`p-2 border rounded-circle ${petNumber < 1 && "disabled"}`} onClick={() => increasePNumber(petNumber - 1)}><PiMinus size={13} /></Button>
+                                                        <span className='p-2 fw-500'>{petNumber}</span>
+                                                        <Button variant='white' className={`p-2 border rounded-circle ${petNumber > 3 && "disabled"}`} onClick={() => increasePNumber(petNumber + 1)}><PiPlus size={13} /></Button>
                                                     </div>
-                                                </span>
-                                            </div>
-                                        </div>
+                                                </Dropdown.Item>
+                                                <Dropdown.Item className='lh-1'>
+                                                    <small className='text-wrap option-description'>W tym miejscu przebywać może maksymalnie 6 gości, nie wliczając małych dzieci. Jeśli przyjeżdżasz z więcej niż 2 zwierzętami, poinformuj o tym gospodarza.</small>
+                                                </Dropdown.Item>
+                                                <Dropdown.Item>
+                                                    <Button className='close-btn border-0 text-decoration-underline fw-500' variant='white'>
+                                                        <small>Zamknij</small>
+                                                    </Button>
+                                                </Dropdown.Item>
+                                            </Dropdown.Menu>
+                                        </Dropdown>
                                     </div>
                                     <Button ref={refReservation} className='w-100 bg-danger border border-0 p-2 fw-500'>
                                         <span>Rezerwuj</span>
                                     </Button>
                                     <span className='d-flex justify-content-center'>
-                                        <p className='fs-small'>Płatność nie zostanie jeszcze naliczona</p>
+                                        <p className='fs-small mt-2'>Płatność nie zostanie jeszcze naliczona</p>
                                     </span>
                                     <span className='d-flex justify-content-between fs-14'>
                                         <p className='text-decoration-underline'>{price} zł x 5 dni</p> <span>{price * 5} zł</span>
@@ -289,7 +297,7 @@ export default function () {
                                     </span>
                                 </Card.Body>
                             </Card>
-                            <div style={{ width: '100%', padding: "10px", maxWidth: "300px", marginLeft: "auto"}} className='d-flex justify-content-center align-items-center'><PiFlag /> <span className='text-decoration-underline ms-1'>Zgłoś tą ofertę</span></div>
+                            <div style={{ width: '100%', padding: "10px", maxWidth: "300px", marginLeft: "auto" }} className='d-flex justify-content-center align-items-center'><PiFlag /> <span className='text-decoration-underline ms-1'>Zgłoś tą ofertę</span></div>
                         </div>
                     </div>
                 </Col>
@@ -378,7 +386,7 @@ export default function () {
                                     <GoVerified className='position-absolute right-0 bottom-0 border rounded-circle bg-danger h3 text-white bg-shadow p-1' />
                                 </div>
                                 <p className='d-flex justify-content-center m-0 h3'>{ownername}</p>
-                                <p className='d-flex justify-content-center align-items-center m-0 fs-small fw-500'><BiTrophy className='me-1'/> Superhost</p>
+                                <p className='d-flex justify-content-center align-items-center m-0 fs-small fw-500'><BiTrophy className='me-1' /> Superhost</p>
                             </div>
                         </Col>
                         <Col sm={5} className='fw-500 h5 m-0'>

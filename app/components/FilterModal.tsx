@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Button, ButtonGroup, Col, Container, Row } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import { IoLanguage } from "react-icons/io5";
 import { Form } from 'react-bootstrap';
@@ -76,11 +76,16 @@ export default function FilterModal(props: any) {
             <Modal.Body>
                 <div>
                     <span className='fw-500'>Rodzaj Miejsca</span>
-                    <div className='border border-1 rounded p-1 d-flex justify-content-between mt-3'>
-                        <div className='filter-modal-option border border-1 rounded p-2'>Dowolny rodzaj</div>
-                        <div className='filter-modal-option border border-1 rounded p-2'>Pokój</div>
+                    {/* <div className='border border-1 trc tlc blc brc p-1 d-flex justify-content-between mt-3'>
+                        <div className='filter-modal-option border border-1 rounded p-2 me-1'>Dowolny rodzaj</div>
+                        <div className='filter-modal-option border border-1 rounded p-2 me-1'>Pokój</div>
                         <div className='filter-modal-option border border-1 rounded p-2'>Cały dom</div>
-                    </div>
+                    </div> */}
+                    <ButtonGroup className='border border-1 trc tlc blc brc p-1 d-flex justify-content-between mt-3'>
+                        <Button variant='white' className='filter-modal-option rounded active'>Dowolny rodzaj</Button>
+                        <Button variant='white' className='filter-modal-option rounded'>Pokój</Button>
+                        <Button variant='white' className='filter-modal-option rounded'>Cały dom</Button>
+                    </ButtonGroup>
                     <hr className='mt-4 mb-4' />
                     <span className='fw-500'>Pokoje i łóżka</span>
                     <div className='mt-3'>

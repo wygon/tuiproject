@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Nav, Row, Tab, Tabs } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import { IoLanguage } from "react-icons/io5";
 import { Form } from 'react-bootstrap';
 
 export default function LanguageModal(props: any) {
-    const [isLangOn, setIsLangOn] = useState(true);
     const languages = [
         { language: 'Polski', country: 'Polska' },
         { language: 'English', country: 'United States' },
@@ -74,89 +73,83 @@ export default function LanguageModal(props: any) {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <div className='d-flex'>
-                    <span className={`lang-modal-option p-2 active-item round-10 ${isLangOn ? "active" : ""}`}
-                        onClick={() => setIsLangOn(true)}
-                    >
-                        Język i region</span>
-                    <span className={`lang-modal-option p-2 active-item round-10 ${!isLangOn ? "active" : ""}`}
-                        onClick={() => setIsLangOn(false)}
-                        style={{ fontWeight: !isLangOn ? '600' : 'normal', borderBottom: '3px black' }}>
-                        Waluta</span>
-                </div>
-                <hr />
-                {isLangOn ? (
-                    <div>
-                        <div className='p-3'>
-                            <div className='language-pill p-3 rounded-lg bg-light position-relative'>
-                                <span className='d-flex align-items-center'>
-                                    <p className='m-0'>Tłumaczenie </p><IoLanguage />
-                                </span>
-                                <p className='m-0 option-description translate-description'>Automatycznie tłumacz opisy i recenzje na język Polski.</p>
-                                <Form.Switch className="position-absolute top-8 end-2" />
+                <Nav variant="underline" defaultActiveKey={"language"} as={Tabs}>
+                    <Tab eventKey="language" title="Język i region" >
+                        <div>
+                            <div className='p-3'>
+                                <div className='language-pill p-3 rounded-lg bg-light position-relative'>
+                                    <span className='d-flex align-items-center'>
+                                        <p className='m-0'>Tłumaczenie </p><IoLanguage />
+                                    </span>
+                                    <p className='m-0 option-description translate-description'>Automatycznie tłumacz opisy i recenzje na język Polski.</p>
+                                    <Form.Switch className="position-absolute top-8 end-2" />
+                                </div>
                             </div>
+                            <h5>Sugerowane języki i regiony</h5>
+                            <Container>
+                                <Row>
+                                    {suggestedLanguages.map((item, index) => {
+                                        let firstOrLast = false;
+                                        if ((index % 5 == 0))
+                                            firstOrLast = true;
+                                        return (
+                                            <>
+                                                <Col xs={6} md={3} lg={{ span: 2, offset: firstOrLast ? 1 : 0 }} className="d-flex justify-content-center align-items-left mb-2">
+                                                    <span className="language-item round-10 ps-2">
+                                                        <p className='m-0'>{item.language}</p>
+                                                        <p className='m-0 option-description'>{item.country}</p>
+                                                    </span>
+                                                </Col>
+                                            </>);
+                                    })}
+                                </Row>
+                            </Container>
+                            <h5>Wybierz język i region</h5>
+                            <Container>
+                                <Row>
+                                    {languages.map((item, index) => {
+                                        let firstOrLast = false;
+                                        if ((index % 5 == 0))
+                                            firstOrLast = true;
+                                        return (
+                                            <>
+                                                <Col xs={6} md={3} lg={{ span: 2, offset: firstOrLast ? 1 : 0 }} className="d-flex justify-content-center align-items-left mb-2">
+                                                    <span className="language-item round-10 ps-2">
+                                                        <p className='m-0'>{item.language}</p>
+                                                        <p className='m-0 option-description'>{item.country}</p>
+                                                    </span>
+                                                </Col>
+                                            </>);
+                                    })}
+                                </Row>
+                            </Container>
                         </div>
-                        <h5>Sugerowane języki i regiony</h5>
-                        <Container>
-                            <Row>
-                                {suggestedLanguages.map((item, index) => {
-                                    let firstOrLast = false;
-                                    if ((index % 5 == 0))
-                                        firstOrLast = true;
-                                    return (
-                                        <>
-                                            <Col xs={6} md={3} lg={{ span: 2, offset: firstOrLast ? 1 : 0 }} className="d-flex justify-content-center align-items-left mb-2">
-                                                <span className="language-item round-10 ps-2">
-                                                    <p className='m-0'>{item.language}</p>
-                                                    <p className='m-0 option-description'>{item.country}</p>
-                                                </span>
-                                            </Col>
-                                        </>);
-                                })}
-                            </Row>
-                        </Container>
-                        <h5>Wybierz język i region</h5>
-                        <Container>
-                            <Row className=''>
-                                {languages.map((item, index) => {
-                                    let firstOrLast = false;
-                                    if ((index % 5 == 0))
-                                        firstOrLast = true;
-                                    return (
-                                        <>
-                                            <Col xs={6} md={3} lg={{ span: 2, offset: firstOrLast ? 1 : 0 }} className="d-flex justify-content-center align-items-left mb-2">
-                                                <span className="language-item round-10 ps-2">
-                                                    <p className='m-0'>{item.language}</p>
-                                                    <p className='m-0 option-description'>{item.country}</p>
-                                                </span>
-                                            </Col>
-                                        </>);
-                                })}
-                            </Row>
-                        </Container>
-                    </div>
-                ) : (
-                    <div>
-                        <Container>
-                            <Row>
-                                <h5>Wybierz walutę</h5>
-                                {currencies.map((item, index) => {
-                                    let firstOrLast = false;
-                                    if ((index % 5 == 0))
-                                        firstOrLast = true;
-                                    return (
-                                        <>
-                                            <Col xs={6} md={3} lg={{ span: 2, offset: firstOrLast ? 1 : 0 }} className="d-flex justify-content-center align-items-left mb-2">
-                                                <span className="language-item round-10 ps-2">
-                                                    <p className='m-0'>{item.name}</p>
-                                                    <p className='m-0 option-description'>{item.code}</p>
-                                                </span>
-                                            </Col>
-                                        </>);
-                                })}
-                            </Row>
-                        </Container>
-                    </div>)}
+                    </Tab>
+                    <Tab eventKey="currency" title="Waluta">
+                        <div>
+                            <h5 className='mt-2'>Wybierz walutę</h5>
+                            <Container>
+                                <Row>
+                                    {currencies.map((item, index) => {
+                                        let firstOrLast = false;
+                                        if ((index % 5 == 0))
+                                            firstOrLast = true;
+                                        return (
+                                            <>
+                                                <Col xs={6} md={3} lg={{ span: 2, offset: firstOrLast ? 1 : 0 }} className="d-flex justify-content-center align-items-left mb-2">
+                                                    <span className="language-item round-10 ps-2">
+                                                        <p className='m-0'>{item.name}</p>
+                                                        <p className='m-0 option-description'>{item.code}</p>
+                                                    </span>
+                                                </Col>
+                                            </>);
+                                    })}
+                                </Row>
+                            </Container>
+                        </div>
+                    </Tab>
+                </Nav>
+                <hr />
             </Modal.Body>
         </Modal>
     );

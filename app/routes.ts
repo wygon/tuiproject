@@ -8,6 +8,7 @@ export default [
     ]),
     layout("./routes/layout/layout-page.tsx",
     [
-        route("/attraction", "./routes/attraction.tsx")
+        route("/attraction/:id", "./routes/attraction.tsx"),
+        route("/map", "./routes/map.tsx")
     ]),
 ] satisfies RouteConfig;

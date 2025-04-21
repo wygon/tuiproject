@@ -296,31 +296,6 @@ nav .btn:hover,
     border-radius: 10px 10px 10px 10px;
 }
 
-/* .category-active-item, */
-.active-item {
-    position: relative;
-    font-weight: normal;
-    padding-bottom: 5px;
-    cursor: pointer;
-}
-
-/* .category-active-item.active, */
-.active-item.active 
-{
-    font-weight: 600;
-}
-/* .category-active-item.active::after, */
-.active-item.active::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 82%;
-    height: 2px;
-    background-color: black;
-    transform: translate(11%, 0)
-}
-
 .attraction-photos .photo-left {
     max-width: 600px;
     width: 100%;
@@ -382,4 +357,53 @@ nav .btn:hover,
     width: 100%;
     display: flex;
     justify-content: center;
+    font-weight: 500;
+    font-size: 14px;
+}
+.dropdown-toggle::after {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+}
+
+#priceCard .dropdown-item:active{
+    background-color: white;
+    color: #212529;
+}
+#priceCard .dropdown-item:hover{
+    cursor:default;
+    background-color: white;
+}
+#priceCard .close-btn{
+    margin-left: 120px;
+}
+
+.lang-modal .nav-link {
+    color: rgb(128, 128, 128);
+    font-size: 14px;
+    font-weight: bold;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.filter-option-button {
+    transition: transform 0.2s;
+}
+.filter-option-button:active {
+    transform: scale(0.9) !important;
+}
+.show-map-button {
+    position: fixed;
+    /* top: 50%; */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: 5%;
+    z-index: 1000;
+    opacity: 90%;
+}
+
+.show-map-button a {
+    text-decoration: none;
+    color: white;
 }
