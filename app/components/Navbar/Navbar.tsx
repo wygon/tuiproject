@@ -23,10 +23,10 @@ export default function Navbar() {
                 <nav className="bg-light">
                     <div className='row d-none d-sm-flex mainpage-container pb-0 pt-0'>
                         <div className="col-sm-2 col-md-4 d-flex align-items-center">
-                            <Link to="/" className="p-3 logo d-flex align-items-center" style={{ textDecoration: "none" }}>
+                            <a href="/" className="p-3 logo d-flex align-items-center" style={{ textDecoration: "none" }}>
                                 <TbBrandAirbnb />
                                 <span>airbnb</span>
-                            </Link>
+                            </a>
                         </div>
                         <div className="col-md-4 text-center p-3 d-sm-none d-md-inline">
                             <button className="btn" style={{ fontWeight: activeSearchHome ? '500' : 'normal' }} onClick={() => setActiveSearchHome(true)}>Domy</button>

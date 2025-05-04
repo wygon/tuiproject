@@ -14,10 +14,10 @@ export default function NavbarSmall() {
                 <nav className="bg-light">
                     <div className='row d-none d-sm-flex attraction-container p-0'>
                         <div className="col-2 d-flex align-items-center">
-                            <Link to="/" className="p-3 ps-2 logo-small d-flex align-items-center" style={{ textDecoration: "none" }}>
+                            <a href="/" className="p-3 ps-2 logo-small d-flex align-items-center" style={{ textDecoration: "none" }}>
                                 <TbBrandAirbnb />
                                 <span>airbnb</span>
-                            </Link>
+                            </a>
                         </div>
                         <div className="col-7 p-3 d-flex align-items-center justify-content-center">
                             <NavbarSearchbarSmall />

@@ -31,12 +31,17 @@
 import { attractions } from "~/categories/attractions";
 import AttractionItemCard from "./AttractionItem";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Col, Row } from "react-bootstrap";
-import { useMemo } from "react";
-import attraction from "~/routes/attraction";
-import { useNavigate } from "react-router";
+import { Col, Row, Spinner } from "react-bootstrap";
+import { useEffect, useMemo, useState } from "react";
 export default function AtractionComponent() {
-    var counter = 0;
+    // const [loading, setLoading] = useState(false);
+
+    // useEffect(() => {
+    //     if (attractions.length > 0) {
+    //         setLoading(false);
+    //     }
+    // }, [attractions]);
+
     const attractionList = useMemo(() => {
         return attractions.map((attraction) => (
             <Col xs={6} sm={4} md={3} lg={3} xl={2}>
@@ -46,8 +51,11 @@ export default function AtractionComponent() {
                 />
             </Col>
             ));
-    }, [attraction]);
-
+    }, [attractions]);
+    // if (loading)
+    //     return <div className='d-flex justify-content-center p-5 m-5'>
+    //         <Spinner animation="border" variant='danger'> </Spinner>
+    //     </div>
     return (
         <div className="mainpage-container">
             <Row>

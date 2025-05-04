@@ -285,6 +285,12 @@ nav .btn:hover,
     margin: auto;
     padding: 20px;
 }
+.book-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    padding: 20px;
+}
 .language-pill {
     max-width: 400px;
     width: 100%;
@@ -406,4 +412,8 @@ nav .btn:hover,
 .show-map-button a{
     text-decoration: none;
     color: white;
+}
+.book-card {
+    max-width: 500px;
+    width: 100%;
 }

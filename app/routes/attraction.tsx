@@ -1,15 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 import { Alert, AlertLink, Button, Card, CardBody, CardGroup, CardImg, Col, Dropdown, DropdownButton, DropdownToggle, Row, Spinner } from 'react-bootstrap';
 import { FiShare } from "react-icons/fi";
 import { PiBuildingApartment, PiFlag, PiHeartBold, PiIslandBold, PiMinus, PiPlus, PiSecurityCameraBold, PiSecurityCameraDuotone, PiWifiHigh } from 'react-icons/pi';
 import { GiFeather, GiFeatherWound, GiLaurelCrown, GiNecklace } from "react-icons/gi";
-import { IoIosArrowDropdown, IoIosStar, IoIosStarHalf, IoIosStarOutline } from "react-icons/io";
+import { IoIosArrowDropdown, IoIosStar } from "react-icons/io";
 import { useEffect, useState } from 'react';
-import { BiShield, BiTrophy } from 'react-icons/bi';
+import { BiDiamond, BiShield, BiTrophy } from 'react-icons/bi';
 import { MdCleaningServices, MdMap, MdOutlineFamilyRestroom, MdSecurityUpdateGood } from 'react-icons/md';
 import { IoLocationSharp } from "react-icons/io5";
-import AttractionPhotoCarousel from '~/components/Attraction/AttractionSingle/AttractionPhotoCarousel';
 import { TbLuggage, TbToolsKitchen } from 'react-icons/tb';
 import RatingComponentSingle from '~/components/Attraction/AttractionSingle/AttractionRatingComponentSingle';
 import { BsChatDots, BsKey, BsTag } from 'react-icons/bs';
@@ -17,7 +15,7 @@ import OpinionComponent from '~/components/Attraction/AttractionSingle/Attractio
 import { CgProfile } from 'react-icons/cg';
 import { GoVerified } from 'react-icons/go';
 import { useInView } from 'react-intersection-observer';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { attractions } from '~/categories/attractions';
 import type { AttractionCardType } from '~/types/attractiontype';
 import RatingStars from '~/components/RatingStars';
@@ -26,7 +24,7 @@ import type { OwnerType } from '~/types/ownertype';
 
 export default function () {
     const { id } = useParams();
-    if(id != null) {var numberId = +id;}
+    if (id != null) { var numberId = +id; }
     const [listing, setListing] = useState(0);
     const [loading, setLoading] = useState(true);
     const [cAttr, setCurrentAttraction] = useState<AttractionCardType | null>(null);
@@ -36,21 +34,25 @@ export default function () {
     const [petNumber, increasePNumber] = useState(0);
     const [refPictureVisible, pictureVisible] = useInView({ threshold: 0 })
     const [refReservation, reservationVisible] = useInView({ threshold: 0 })
-    
+
     const [owner, setOwner] = useState<OwnerType | null>(null);
+
+    const book = useNavigate();
+    const navigateToBooking = () => {
+        book(`/book/${cAttr?.id}/${guestNumber + kidsNumber + childrenNumber}`);
+    }
 
     useEffect(() => {
         const fetchListing = async () => {
             try {
-                // setLoading(true);
+                setLoading(true);
                 const foundAttraction = attractions.find((attraction) => attraction.id === numberId);
                 setCurrentAttraction(foundAttraction !== undefined ? foundAttraction : null);
                 const foundOwner = ownersList.find((owner) => owner.id === foundAttraction?.ownerId);
-                if(foundAttraction != null) {setListing(foundAttraction.id);}
-                if(foundOwner != null) {setOwner(foundOwner);}
+                if (foundAttraction != null) { setListing(foundAttraction.id); }
+                if (foundOwner != null) { setOwner(foundOwner); }
             }
-            catch (error)
-            {
+            catch (error) {
                 console.log(error);
             }
             finally {
@@ -65,10 +67,12 @@ export default function () {
     const date5 = new Date(now.getTime() + (5 * 24 * 60 * 60 * 1000));
     const date5Now = date5.toLocaleDateString();
 
-    const cleaningFee = 300;
+    if (loading)
+        return <div className='d-flex justify-content-center p-5 m-5'>
+            <Spinner animation="border" variant='danger'> </Spinner>
+        </div>
 
-    if(loading) return <Spinner animation="border" variant='danger'> </Spinner>
-    if(!listing) {return <div> Nie ma takiej oferty</div>}
+    if (!listing) { return <div> Nie ma takiej oferty</div> }
     else return (
         <div className='attraction-container'>
             <div className="d-flex justify-content-between mb-3">
@@ -118,7 +122,7 @@ export default function () {
                             <p className='m-0 d-flex align-items-center' style={{ fontSize: "11px" }}><span className='d-flex align-items-center me-1'><IoIosStar style={{ fontSize: "10px" }} />{cAttr?.rating.toFixed(2)}</span> - <span className='option-description ms-1'>{cAttr?.reviews} recenzji</span></p>
                         </Col>
                         <Col>
-                            <Button className={`bg-danger border border-0 fw-500 ps-4 pe-4 p-2`}>
+                            <Button className={`bg-danger border border-0 fw-500 ps-4 pe-4 p-2`} onClick={navigateToBooking}>
                                 <span>Rezerwuj</span>
                             </Button>
                         </Col>
@@ -131,13 +135,13 @@ export default function () {
                 <Col md={7}>
                     <h4 className='mb-0'>Cały obiekt w: {cAttr?.title}, {cAttr?.country}</h4>
                     <p className='mb-4'>6 gości - 2 sypialnie - 3 łóżka - 1 łazienka</p>
-                    <div className="opinion-bar bg-white border border-1 trc tlc brc blc mb-4">
+                    {cAttr?.rating > 4.3 &&<div className="opinion-bar bg-white border border-1 trc tlc brc blc mb-4">
                         <span className="rounded-pill p-2 w33"><GiLaurelCrown className='h1' /></span>
                         <div className="divider" />
                         <span className="rounded-pill p-2 w33">
                             <div>
                                 <div className='d-flex align-items-center justify-content-center fs-14 fw-500'>{cAttr?.rating.toFixed(2)}</div>
-                                <RatingStars rating={ cAttr?.rating } />
+                                <RatingStars rating={cAttr?.rating} />
                             </div>
                         </span>
                         <div className="divider" />
@@ -149,7 +153,7 @@ export default function () {
                                 </div>
                             </div>
                         </span>
-                    </div>
+                    </div>}
                     <span className='d-flex align-items-center'>
                         <CgProfile className='h1' />
                         <span className='ps-3'>
@@ -234,8 +238,14 @@ export default function () {
                 </Col>
                 <Col md={5} className='pe-1'>
                     <div className='position-sticky top-10 pt-10'>
+                        {cAttr?.rating > 4.5 &&
+                            <div className="d-flex align-items-center justify-content-between shadow rounded mb-4" style={{ width: '100%', padding: "10px", maxWidth: "300px", marginLeft: "auto" }}>
+                                <BiDiamond className="start-4 h1 text-danger me-2" />
+                                <small className='fw-500'>To wyjątkowe znalezisko! Oferowany dom jest zazwyczaj zarezerwowany.</small>
+                            </div>
+                        }
                         <div className=''>
-                            <Card style={{ width: '100%', padding: "10px", maxWidth: "300px", marginLeft: "auto" }} className='bg-shadow'>
+                            <Card style={{ width: '100%', padding: "10px", maxWidth: "300px", marginLeft: "auto" }} className='shadow'>
                                 <Card.Title className='ps-3 pt-2'>
                                     {cAttr?.price} zł noc
                                 </Card.Title>
@@ -312,7 +322,10 @@ export default function () {
                                             </Dropdown.Menu>
                                         </Dropdown>
                                     </div>
-                                    <Button ref={refReservation} className='w-100 bg-danger border border-0 p-2 fw-500'>
+                                    <Button ref={refReservation}
+                                        onClick={navigateToBooking}
+                                        className='w-100 bg-danger border border-0 p-2 fw-500'
+                                    >
                                         <span>Rezerwuj</span>
                                     </Button>
                                     <span className='d-flex justify-content-center'>
@@ -322,14 +335,14 @@ export default function () {
                                         <p className='text-decoration-underline'>{cAttr?.price} zł x 5 dni</p> <span>{cAttr?.price * 5} zł</span>
                                     </span>
                                     <span className='d-flex justify-content-between fs-14'>
-                                        <p className='text-decoration-underline'>Opłata za sprzątanie</p> <span>{cleaningFee} zł</span>
+                                        <p className='text-decoration-underline'>Opłata za sprzątanie</p> <span>{cAttr?.price * 0.5} zł</span>
                                     </span>
                                     <span className='d-flex justify-content-between fs-14'>
                                         <p className='text-decoration-underline'>Opłata serwisowa Airbnb</p> <span>{(cAttr?.price * 0.8).toFixed()} zł</span>
                                     </span>
                                     <hr />
                                     <span className='d-flex justify-content-between fw-500'>
-                                        <span>Łącznie</span> <span>{((cAttr?.price * 5) + cleaningFee + (cAttr?.price * 0.8)).toFixed()} zł</span>
+                                        <span>Łącznie</span> <span>{((cAttr?.price * 5) + (cAttr?.price * 0.5) + (cAttr?.price * 0.8)).toFixed()} zł</span>
                                     </span>
                                 </Card.Body>
                             </Card>
@@ -429,7 +442,7 @@ export default function () {
                         <Col sm={5} className='fw-500 h5 m-0'>
                             <div className='p-2'>
                                 <span>
-                                    {(owner?.years*3.4).toFixed()}
+                                    {(owner?.years * 3.4).toFixed()}
                                     <p style={{ fontSize: "10px" }}>Recenzje</p>
                                 </span>
                                 <hr className='m-0' />
