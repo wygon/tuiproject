@@ -1,25 +1,21 @@
-import { PiAppStoreLogoBold, PiArticleThin, PiGlobe, PiGreaterThanLight, PiHeartStraightBold, PiLessThanLight, PiPersonSimpleCircleDuotone } from "react-icons/pi";
+import { PiArticleThin, PiGlobe} from "react-icons/pi";
 import { CgProfile } from "react-icons/cg";
 import CategoryNav from '~/components/CategoryNav';
 import { useState } from 'react';
 import LanguageModal from '~/components/LanguageModal';
 import NavbarSearchbar from "./NavbarSearchbar";
 import NavbarSearchbarSmall from "./NavbarSearchbarSmall";
-import { FaAirbnb } from "react-icons/fa";
 import { TbBrandAirbnb } from "react-icons/tb";
-import { Link } from "react-router-dom";
-import { BiFilter } from "react-icons/bi";
-import { IoOptionsOutline } from "react-icons/io5";
-import FilterModal from "../FilterModal";
-export default function Navbar() {
+
+export default function Navbar({ search, setSearch, activeCategory, setActiveCategory }) {
     const [activeSearchHome, setActiveSearchHome] = useState(true);
-    const [searchBarActive, setSearchBarActive] = useState(false);
     const [isLoginOpen, setIsLoginOpen] = useState(false);
     const [isLanguageModalShow, setIsLanguageModalShow] = useState(false);
 
     return (
         <div>
             <div className=''>
+                
                 <nav className="bg-light">
                     <div className='row d-none d-sm-flex mainpage-container pb-0 pt-0'>
                         <div className="col-sm-2 col-md-4 d-flex align-items-center">
@@ -63,7 +59,7 @@ export default function Navbar() {
                             )}
                         </div>
                         <div className="d-flex justify-content-center align-items-center">
-                            <NavbarSearchbar activeSearchHome={activeSearchHome} />
+                            <NavbarSearchbar activeSearchHome={activeSearchHome} setSearch={setSearch} />
                         </div>
                     </div>
                     <div className="col-xs-12 pt-3 d-flex d-sm-none align-items-center justify-content-center">
@@ -71,12 +67,7 @@ export default function Navbar() {
                     </div>
                     <hr className="mb-0"/>
                     <div className="d-flex align-items-center justify-content-center  ms-3 me-3">
-                            {/* <span className={`p-2 border border-secondary rounded-circle fs-small ms-4 me-3`}> <PiLessThanLight/></span> */}
-                        <CategoryNav />
-                            {/* <span className={`p-2 border border-secondary rounded-circle fs-small ms-4 me-3`}> <PiGreaterThanLight/></span> */}
-                        {/* <div className="bg-white p-2 border rounded">
-                            <span className="fs-small d-flex p-1"><IoOptionsOutline style={{fontSize: "20px", marginRight: "5px"}}/> Filtry</span>
-                        </div> */}
+                        <CategoryNav activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
                     </div>
                     <hr className="mt-0" />
                 </nav>

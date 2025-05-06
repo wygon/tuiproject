@@ -1,5 +1,327 @@
-import type { AttractionCardType } from "~/types/attractiontype";
+// import type { AttractionCardType } from "~/types/attractiontype";
 
+// export const attractions: AttractionCardType[] = [
+//     {
+//         id: 1,
+//         title: 'Nasum',
+//         picture: '28',
+//         country: 'Szwecja',
+//         description: 'Widok na góry i jezioro',
+//         owner: 'Gospodaż jest osoba prywatna',
+//         rating: 4.32,
+//         price: '123',
+//         province: 'Skåne',
+//         reviews: 37,
+//         ownerId: 5
+//     },
+//     {
+//         id: 2,
+//         title: 'Koscielisko',
+//         picture: '29',
+//         country: 'Polska',
+//         description: 'Widok na góry',
+//         owner: 'Gospodaż jest firma',
+//         rating: 5,
+//         price: '1235',
+//         province: 'Małopolskie',
+//         reviews: 42,
+//         ownerId: 2
+//     },
+//     {
+//         id: 3,
+//         title: 'Maniowy',
+//         picture: '49',
+//         country: 'Polska',
+//         description: 'Widok na doline',
+//         owner: 'Gospodaż jest osoba prywatna',
+//         rating: 2,
+//         price: '500',
+//         province: 'Małopolskie',
+//         reviews: 8,
+//         ownerId: 7
+//     },
+//     {
+//         id: 4,
+//         title: 'Zakopane',
+//         picture: '33',
+//         country: 'Polska',
+//         description: 'Apartament w centrum miasta',
+//         owner: 'Gospodaż jest osoba prywatna',
+//         rating: 4.8,
+//         price: '650',
+//         province: 'Małopolskie',
+//         reviews: 45,
+//         ownerId: 3
+//     },
+//     {
+//         id: 5,
+//         title: 'Sztokholm',
+//         picture: '37',
+//         country: 'Szwecja',
+//         description: 'Apartament z widokiem na morze',
+//         owner: 'Gospodaż jest firma',
+//         rating: 4.5,
+//         price: '1800',
+//         province: 'Stockholm',
+//         reviews: 29,
+//         ownerId: 8
+//     },
+//     {
+//         id: 6,
+//         title: 'Gdańsk',
+//         picture: '57',
+//         country: 'Polska',
+//         description: 'Apartament w Starym Mieście',
+//         owner: 'Gospodaż jest osoba prywatna',
+//         rating: 4.2,
+//         price: '450',
+//         province: 'Pomorskie',
+//         reviews: 18,
+//         ownerId: 4
+//     },
+//     {
+//         id: 7,
+//         title: 'Göteborg',
+//         picture: '58',
+//         country: 'Szwecja',
+//         description: 'Domek nad jeziorem',
+//         owner: 'Gospodaż jest firma',
+//         rating: 3.9,
+//         price: '950',
+//         province: 'Västra Götaland',
+//         reviews: 23,
+//         ownerId: 1
+//     },
+//     {
+//         id: 8,
+//         title: 'Kraków',
+//         picture: '68',
+//         country: 'Polska',
+//         description: 'Apartament blisko Rynku',
+//         owner: 'Gospodaż jest osoba prywatna',
+//         rating: 4.7,
+//         price: '520',
+//         province: 'Małopolskie',
+//         reviews: 47,
+//         ownerId: 9
+//     },
+//     {
+//         id: 9,
+//         title: 'Malmö',
+//         picture: '69',
+//         country: 'Szwecja',
+//         description: 'Nowoczesne studio w centrum',
+//         owner: 'Gospodaż jest firma',
+//         rating: 4.1,
+//         price: '870',
+//         province: 'Skåne',
+//         reviews: 16,
+//         ownerId: 6
+//     },
+//     {
+//         id: 10,
+//         title: 'Wrocław',
+//         picture: '10',
+//         country: 'Polska',
+//         description: 'Apartament z tarasem',
+//         owner: 'Gospodaż jest osoba prywatna',
+//         rating: 4.3,
+//         price: '380',
+//         province: 'Dolnośląskie',
+//         reviews: 31,
+//         ownerId: 10
+//     },
+//     {
+//         id: 11,
+//         title: 'Uppsala',
+//         picture: '11',
+//         country: 'Szwecja',
+//         description: 'Historyczny dom w centrum',
+//         owner: 'Gospodaż jest firma',
+//         rating: 4.6,
+//         price: '1100',
+//         province: 'Uppsala',
+//         reviews: 24,
+//         ownerId: 5
+//     },
+//     {
+//         id: 12,
+//         title: 'Poznań',
+//         picture: '12',
+//         country: 'Polska',
+//         description: 'Mieszkanie blisko Starego Rynku',
+//         owner: 'Gospodaż jest osoba prywatna',
+//         rating: 3.8,
+//         price: '340',
+//         province: 'Wielkopolskie',
+//         reviews: 19,
+//         ownerId: 2
+//     },
+//     {
+//         id: 13,
+//         title: 'Kiruna',
+//         picture: '13',
+//         country: 'Szwecja',
+//         description: 'Domek z widokiem na zorzę polarną',
+//         owner: 'Gospodaż jest firma',
+//         rating: 4.9,
+//         price: '2200',
+//         province: 'Norrbotten',
+//         reviews: 33,
+//         ownerId: 7
+//     },
+//     {
+//         id: 14,
+//         title: 'Ustroń',
+//         picture: '14',
+//         country: 'Polska',
+//         description: 'Domek w górach z sauną',
+//         owner: 'Gospodaż jest osoba prywatna',
+//         rating: 4.4,
+//         price: '580',
+//         province: 'Śląskie',
+//         reviews: 26,
+//         ownerId: 3
+//     },
+//     {
+//         id: 15,
+//         title: 'Lund',
+//         picture: '15',
+//         country: 'Szwecja',
+//         description: 'Apartament w centrum uniwersyteckim',
+//         owner: 'Gospodaż jest firma',
+//         rating: 4.0,
+//         price: '780',
+//         province: 'Skåne',
+//         reviews: 12,
+//         ownerId: 8
+//     },
+//     {
+//         id: 16,
+//         title: 'Sopot',
+//         picture: '16',
+//         country: 'Polska',
+//         description: 'Apartament blisko plaży',
+//         owner: 'Gospodaż jest osoba prywatna',
+//         rating: 4.6,
+//         price: '720',
+//         province: 'Pomorskie',
+//         reviews: 39,
+//         ownerId: 4
+//     },
+//     {
+//         id: 17,
+//         title: 'Jönköping',
+//         picture: '17',
+//         country: 'Szwecja',
+//         description: 'Dom nad jeziorem Vättern',
+//         owner: 'Gospodaż jest firma',
+//         rating: 4.2,
+//         price: '900',
+//         province: 'Jönköping',
+//         reviews: 22,
+//         ownerId: 1
+//     },
+//     {
+//         id: 18,
+//         title: 'Białka Tatrzańska',
+//         picture: '18',
+//         country: 'Polska',
+//         description: 'Apartament blisko wyciągów narciarskich',
+//         owner: 'Gospodaż jest osoba prywatna',
+//         rating: 4.5,
+//         price: '490',
+//         province: 'Małopolskie',
+//         reviews: 35,
+//         ownerId: 9
+//     },
+//     {
+//         id: 19,
+//         title: 'Helsingborg',
+//         picture: '19',
+//         country: 'Szwecja',
+//         description: 'Apartament z widokiem na Danię',
+//         owner: 'Gospodaż jest firma',
+//         rating: 3.7,
+//         price: '830',
+//         province: 'Skåne',
+//         reviews: 14,
+//         ownerId: 6
+//     },
+//     {
+//         id: 20,
+//         title: 'Szczyrk',
+//         picture: '20',
+//         country: 'Polska',
+//         description: 'Domek w stylu góralskim',
+//         owner: 'Gospodaż jest osoba prywatna',
+//         rating: 4.3,
+//         price: '550',
+//         province: 'Śląskie',
+//         reviews: 28,
+//         ownerId: 10
+//     },
+//     {
+//         id: 21,
+//         title: 'Örebro',
+//         picture: '21',
+//         country: 'Szwecja',
+//         description: 'Mieszkanie w zabytkowej kamienicy',
+//         owner: 'Gospodaż jest firma',
+//         rating: 4.1,
+//         price: '750',
+//         province: 'Örebro',
+//         reviews: 17,
+//         ownerId: 5
+//     },
+//     {
+//         id: 22,
+//         title: 'Międzyzdroje',
+//         picture: '22',
+//         country: 'Polska',
+//         description: 'Apartament z widokiem na morze',
+//         owner: 'Gospodaż jest osoba prywatna',
+//         rating: 4.4,
+//         price: '600',
+//         province: 'Zachodniopomorskie',
+//         reviews: 41,
+//         ownerId: 2
+//     },
+//     {
+//         id: 23,
+//         title: 'Linköping',
+//         picture: '23',
+//         country: 'Szwecja',
+//         description: 'Nowoczesny apartament w centrum',
+//         owner: 'Gospodaż jest firma',
+//         rating: 3.9,
+//         price: '820',
+//         province: 'Östergötland',
+//         reviews: 11,
+//         ownerId: 7
+//     }
+// ]
+import type { AttractionCardType } from "~/types/attractiontype";
+import { categories } from "./categories";
+
+// Zaktualizowany interfejs z dodanym polem categories jako tablica
+// Zakładam, że ten interfejs powinien zostać zaktualizowany w pliku types/attractiontype.ts
+/*
+export interface AttractionCardType {
+    id: number;
+    title: string;
+    picture: string;
+    country: string;
+    description: string;
+    owner: string;
+    rating: number;
+    price: string;
+    province: string;
+    reviews: number;
+    ownerId: number;
+    categories?: string[]; // Tablica ID kategorii
+}
+*/
 export const attractions: AttractionCardType[] = [
     {
         id: 1,
@@ -12,7 +334,8 @@ export const attractions: AttractionCardType[] = [
         price: '123',
         province: 'Skåne',
         reviews: 37,
-        ownerId: 5
+        ownerId: 5,
+        categories: ['niesamowite-widoki', 'blisko-jeziora', 'przy-lesie'] // Góry, jezioro, przypuszczalnie las
     },
     {
         id: 2,
@@ -25,7 +348,8 @@ export const attractions: AttractionCardType[] = [
         price: '1235',
         province: 'Małopolskie',
         reviews: 42,
-        ownerId: 2
+        ownerId: 2,
+        categories: ['domki-szalasy', 'niesamowite-widoki', 'na-wsi'] // Góry, widoki, wieś
     },
     {
         id: 3,
@@ -38,7 +362,8 @@ export const attractions: AttractionCardType[] = [
         price: '500',
         province: 'Małopolskie',
         reviews: 8,
-        ownerId: 7
+        ownerId: 7,
+        categories: ['niesamowite-widoki', 'na-wsi', 'agroturystyka'] // Dolina, wieś
     },
     {
         id: 4,
@@ -51,7 +376,8 @@ export const attractions: AttractionCardType[] = [
         price: '650',
         province: 'Małopolskie',
         reviews: 45,
-        ownerId: 3
+        ownerId: 3,
+        categories: ['apartamenty', 'domki-szalasy', 'niesamowite-widoki'] // Apartament, góry w pobliżu
     },
     {
         id: 5,
@@ -64,7 +390,8 @@ export const attractions: AttractionCardType[] = [
         price: '1800',
         province: 'Stockholm',
         reviews: 29,
-        ownerId: 8
+        ownerId: 8,
+        categories: ['apartamenty', 'nad-morzem', 'luksusowe'] // Apartament, morze, wysoka cena
     },
     {
         id: 6,
@@ -77,7 +404,8 @@ export const attractions: AttractionCardType[] = [
         price: '450',
         province: 'Pomorskie',
         reviews: 18,
-        ownerId: 4
+        ownerId: 4,
+        categories: ['apartamenty', 'ikony', 'nad-morzem'] // Apartament, zabytkowa lokalizacja, blisko morza
     },
     {
         id: 7,
@@ -90,7 +418,8 @@ export const attractions: AttractionCardType[] = [
         price: '950',
         province: 'Västra Götaland',
         reviews: 23,
-        ownerId: 1
+        ownerId: 1,
+        categories: ['blisko-jeziora', 'chatki', 'przy-lesie'] // Domek nad jeziorem, prawdopodobnie las w pobliżu
     },
     {
         id: 8,
@@ -103,7 +432,8 @@ export const attractions: AttractionCardType[] = [
         price: '520',
         province: 'Małopolskie',
         reviews: 47,
-        ownerId: 9
+        ownerId: 9,
+        categories: ['apartamenty', 'ikony', 'stylowe-domy'] // Apartament, historyczne miejsce
     },
     {
         id: 9,
@@ -116,7 +446,8 @@ export const attractions: AttractionCardType[] = [
         price: '870',
         province: 'Skåne',
         reviews: 16,
-        ownerId: 6
+        ownerId: 6,
+        categories: ['apartamenty', 'stylowe-domy', 'luksusowe'] // Studio, nowoczesność
     },
     {
         id: 10,
@@ -129,7 +460,8 @@ export const attractions: AttractionCardType[] = [
         price: '380',
         province: 'Dolnośląskie',
         reviews: 31,
-        ownerId: 10
+        ownerId: 10,
+        categories: ['apartamenty', 'stylowe-domy', 'ikony'] // Apartament z tarasem, prawdopodobnie stylowy
     },
     {
         id: 11,
@@ -142,7 +474,8 @@ export const attractions: AttractionCardType[] = [
         price: '1100',
         province: 'Uppsala',
         reviews: 24,
-        ownerId: 5
+        ownerId: 5,
+        categories: ['stylowe-domy', 'ikony', 'luksusowe'] // Historyczny dom, wysoka cena
     },
     {
         id: 12,
@@ -155,7 +488,8 @@ export const attractions: AttractionCardType[] = [
         price: '340',
         province: 'Wielkopolskie',
         reviews: 19,
-        ownerId: 2
+        ownerId: 2,
+        categories: ['apartamenty', 'ikony'] // Mieszkanie w centrum, historyczna lokalizacja
     },
     {
         id: 13,
@@ -168,7 +502,8 @@ export const attractions: AttractionCardType[] = [
         price: '2200',
         province: 'Norrbotten',
         reviews: 33,
-        ownerId: 7
+        ownerId: 7,
+        categories: ['niesamowite-widoki', 'chatki', 'luksusowe'] // Zorza, domek, wysoka cena
     },
     {
         id: 14,
@@ -181,7 +516,8 @@ export const attractions: AttractionCardType[] = [
         price: '580',
         province: 'Śląskie',
         reviews: 26,
-        ownerId: 3
+        ownerId: 3,
+        categories: ['domki-szalasy', 'niesamowite-widoki', 'luksusowe'] // Domek w górach, sauna
     },
     {
         id: 15,
@@ -194,7 +530,8 @@ export const attractions: AttractionCardType[] = [
         price: '780',
         province: 'Skåne',
         reviews: 12,
-        ownerId: 8
+        ownerId: 8,
+        categories: ['apartamenty', 'ikony'] // Apartament, uniwersytet (ikona)
     },
     {
         id: 16,
@@ -207,7 +544,8 @@ export const attractions: AttractionCardType[] = [
         price: '720',
         province: 'Pomorskie',
         reviews: 39,
-        ownerId: 4
+        ownerId: 4,
+        categories: ['apartamenty', 'nad-morzem', 'luksusowe'] // Apartament przy plaży
     },
     {
         id: 17,
@@ -220,7 +558,8 @@ export const attractions: AttractionCardType[] = [
         price: '900',
         province: 'Jönköping',
         reviews: 22,
-        ownerId: 1
+        ownerId: 1,
+        categories: ['blisko-jeziora', 'stylowe-domy', 'niesamowite-widoki'] // Dom nad jeziorem
     },
     {
         id: 18,
@@ -233,7 +572,8 @@ export const attractions: AttractionCardType[] = [
         price: '490',
         province: 'Małopolskie',
         reviews: 35,
-        ownerId: 9
+        ownerId: 9,
+        categories: ['apartamenty', 'domki-szalasy', 'niesamowite-widoki'] // Apartament w górach
     },
     {
         id: 19,
@@ -246,7 +586,8 @@ export const attractions: AttractionCardType[] = [
         price: '830',
         province: 'Skåne',
         reviews: 14,
-        ownerId: 6
+        ownerId: 6,
+        categories: ['apartamenty', 'nad-morzem', 'niesamowite-widoki'] // Apartament z widokiem na morze/cieśninę
     },
     {
         id: 20,
@@ -259,7 +600,8 @@ export const attractions: AttractionCardType[] = [
         price: '550',
         province: 'Śląskie',
         reviews: 28,
-        ownerId: 10
+        ownerId: 10,
+        categories: ['domki-szalasy', 'stylowe-domy', 'na-wsi'] // Domek góralski
     },
     {
         id: 21,
@@ -272,7 +614,8 @@ export const attractions: AttractionCardType[] = [
         price: '750',
         province: 'Örebro',
         reviews: 17,
-        ownerId: 5
+        ownerId: 5,
+        categories: ['apartamenty', 'ikony', 'stylowe-domy'] // Mieszkanie w zabytkowym budynku
     },
     {
         id: 22,
@@ -285,7 +628,8 @@ export const attractions: AttractionCardType[] = [
         price: '600',
         province: 'Zachodniopomorskie',
         reviews: 41,
-        ownerId: 2
+        ownerId: 2,
+        categories: ['apartamenty', 'nad-morzem', 'niesamowite-widoki'] // Apartament, widok na morze
     },
     {
         id: 23,
@@ -298,6 +642,7 @@ export const attractions: AttractionCardType[] = [
         price: '820',
         province: 'Östergötland',
         reviews: 11,
-        ownerId: 7
+        ownerId: 7,
+        categories: ['apartamenty', 'stylowe-domy', 'luksusowe'] // Nowoczesny apartament
     }
 ]

@@ -152,21 +152,10 @@ nav .btn:hover,
 .category-nav::-webkit-scrollbar {
     display: none;
 }
-.category-item:hover {
+.category-item:active {
     background-color: rgba(255, 0, 0, 0);
     filter: brightness(0);
-
 }
-/* .category-item:hover::after{
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 82%;
-    height: 2px;
-    background-color: rgb(255, 0, 0);
-    transform: translate(11%, 0)
-} */
 
 .category-item {
     filter: brightness(3);
@@ -197,6 +186,10 @@ nav .btn:hover,
 .atraction-item-card span {
     margin-bottom: 0;
     font-size: small;
+}
+.category-item,
+.atraction-item-card:hover {
+    cursor: pointer;
 }
 .heart-btn {
     border: 0;
@@ -241,14 +234,7 @@ nav .btn:hover,
     padding: 10px;
     margin-left: 0;
 }
-.filter-modal .modal-dialog {
-}
-.filter-modal .modal-content {
-}
-.filter-modal .modal-body {
-}
-.filter-modal .modal-content .btn-close {
-}
+
 .form-check-input:checked
 {
     background-color: black;

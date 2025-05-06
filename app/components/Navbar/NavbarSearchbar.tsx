@@ -3,9 +3,11 @@ import { IoIosSearch } from "react-icons/io";
 
 interface NavbarSearchbarProps {
     activeSearchHome: boolean;
+    setSearch : string;
 }
-export default function NavbarSearchbar ({ activeSearchHome } : NavbarSearchbarProps) {
+export default function NavbarSearchbar ({ activeSearchHome, setSearch } : NavbarSearchbarProps) {
     const [searchBarActive, setSearchBarActive] = useState(false);
+
     return (
         <div className="search-bar bg-white rounded-pill d-sm-none d-md-flex"
             onFocus={() => setSearchBarActive(true)}
@@ -13,7 +15,11 @@ export default function NavbarSearchbar ({ activeSearchHome } : NavbarSearchbarP
             <form className="d-flex align-items-center w-100" >
                 <label htmlFor="kierunki" className="rounded-pill search-bar-item p-2 w33">
                     <span className="">Gdzie</span>
-                    <input id="kierunki" className="" placeholder="Wyszukaj kierunki" />
+                    <input id="kierunki" 
+                    className="" 
+                    placeholder="Wyszukaj kierunki" 
+                    onChange={(e) => setSearch(e.target.value)} 
+                    />
                 </label>
                 <div className="divider"></div>
                 {activeSearchHome ? (

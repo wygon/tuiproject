@@ -1,3 +1,5 @@
+import type { Category } from "./categorytype";
+
 export interface AttractionCardType {
     id: number;
     picture: string;
@@ -10,4 +12,5 @@ export interface AttractionCardType {
     price: string;
     reviews: number;
     ownerId: number;
+    categories : string[];
 }

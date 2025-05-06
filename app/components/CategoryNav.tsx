@@ -5,9 +5,12 @@ import { IoOptionsOutline } from "react-icons/io5";
 import { useRef, useState } from "react";
 import FilterModal from "./FilterModal";
 
-export default function CategoryNav() {
+export default function CategoryNav( { activeCategory, setActiveCategory } ) {
     const categoryNavRef = useRef<HTMLDivElement>(null);
     const [isFilterModalShow, setIsFilterModalShow] = useState(false);
+
+    // const [activeCategory, setactiveCategory] = useState("");
+
     const scrollLeft = () => {
         if(categoryNavRef.current){
             categoryNavRef.current.scrollBy({
@@ -26,11 +29,16 @@ export default function CategoryNav() {
     };
     return (
         <>
-            <div ref={categoryNavRef} className="category-nav d-flex align-items-center">
+            <div ref={categoryNavRef} className="category-nav d-flex align-items-center"
+            >
                 {categories.map((category) =>
                     <CategoryItem
                     key={category.id}
                     category={category}
+                    isActive={activeCategory === category.id}
+                    activeCategory={activeCategory}
+                    setActiveCategory={setActiveCategory}
+                    // onClick={() => setActiveCategory(category)}
                     />
                 )}
             </div>

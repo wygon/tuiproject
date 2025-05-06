@@ -1,73 +1,41 @@
-// import { attractions } from "~/categories/attractions";
-// import AttractionItemCard from "./AttractionItem";
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import { Col, Row } from "react-bootstrap";
-// import { Link } from "react-router";
-// export default function AtractionComponent() {
-//     var counter = 0;
-//     return (
-//         <div className="container-custom">
-//             <Row className="atraction-component justify-content-center">
-//                 {attractions.map((attraction) => {
-//                     let firstOrLast = false;
-//                     if ((counter % 5 == 0))
-//                         firstOrLast = true;
-//                      counter++;
-
-//                  return (<Col xs={6} sm={4} md={3} lg={3} xl={{ span: 2, offset: firstOrLast ? 1 : 0 }} >
-//                         {/* <Link to="/attraction"> */}
-//                         <AttractionItemCard
-//                             key={attraction.id}
-//                             attraction={attraction}
-//                             />
-//                         {/* </Link> */}
-//                     </Col>
-//                     );
-//                 })}
-//             </Row>
-//         </div>
-//     );
-// }
 import { attractions } from "~/categories/attractions";
 import AttractionItemCard from "./AttractionItem";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Col, Row, Spinner } from "react-bootstrap";
+import { Button, Col, Row, Spinner } from "react-bootstrap";
 import { useEffect, useMemo, useState } from "react";
-export default function AtractionComponent() {
-    // const [loading, setLoading] = useState(false);
 
-    // useEffect(() => {
-    //     if (attractions.length > 0) {
-    //         setLoading(false);
-    //     }
-    // }, [attractions]);
+interface Props {
+    search : string;
+    activeCategory : string;
+}
+
+export default function AtractionComponent({ search, activeCategory } : Props) {
 
     const attractionList = useMemo(() => {
-        return attractions.map((attraction) => (
-            <Col xs={6} sm={4} md={3} lg={3} xl={2}>
+        let filteredList = attractions;
+        if (activeCategory !== "") {
+            filteredList = filteredList.filter(
+                attraction => attraction.categories.includes(activeCategory))
+        }
+        if (search !== "") {
+            filteredList = filteredList.filter(
+                attraction =>
+                    attraction.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ||
+                    attraction.country.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
+            }
+        return filteredList.map((attraction) => (
+            <Col xs={12} sm={6} md={4} lg={3} xl={2}>
                 <AttractionItemCard
                     key={attraction.id}
                     attraction={attraction}
                 />
             </Col>
-            ));
-    }, [attractions]);
-    // if (loading)
-    //     return <div className='d-flex justify-content-center p-5 m-5'>
-    //         <Spinner animation="border" variant='danger'> </Spinner>
-    //     </div>
+        ));
+    }, [attractions, search, activeCategory]);
+
     return (
         <div className="mainpage-container">
             <Row>
-                {/* {attractions.map((attraction) => {
-                 return (<Col xs={6} sm={4} md={3} lg={3} xl={2}>
-                        <AttractionItemCard
-                            key={attraction.id}
-                            attraction={attraction}
-                            />
-                    </Col>
-                    );
-                })} */}
                 {attractionList}
             </Row>
         </div>
