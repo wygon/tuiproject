@@ -2,14 +2,14 @@ import { categories } from "~/categories/categories";
 import CategoryItem from "./CategoryItem";
 import { PiGreaterThanLight, PiLessThanLight } from "react-icons/pi";
 import { IoOptionsOutline } from "react-icons/io5";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import FilterModal from "./FilterModal";
+import { ActiveCategoryContext } from "../routes/index";
 
-export default function CategoryNav( { activeCategory, setActiveCategory } ) {
+export default function CategoryNav() {
     const categoryNavRef = useRef<HTMLDivElement>(null);
     const [isFilterModalShow, setIsFilterModalShow] = useState(false);
-
-    // const [activeCategory, setactiveCategory] = useState("");
+    const ac = useContext(ActiveCategoryContext);
 
     const scrollLeft = () => {
         if(categoryNavRef.current){
@@ -35,10 +35,7 @@ export default function CategoryNav( { activeCategory, setActiveCategory } ) {
                     <CategoryItem
                     key={category.id}
                     category={category}
-                    isActive={activeCategory === category.id}
-                    activeCategory={activeCategory}
-                    setActiveCategory={setActiveCategory}
-                    // onClick={() => setActiveCategory(category)}
+                    isActive={ac.activeCategory === category.id}
                     />
                 )}
             </div>

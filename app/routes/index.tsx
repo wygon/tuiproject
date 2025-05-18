@@ -1,23 +1,43 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import "app/routes/airbnbcss/stylesheet.css";
 import AttractionComponent from "~/components/Attraction/AttractionComponent";
 import Footer from '~/components/Footer';
 import MapButton from '~/components/MapButton';
 import Navbar from '~/components/Navbar/Navbar';
-import { useState } from 'react';
+import { useState, createContext, type Dispatch, type SetStateAction } from 'react';
+
+interface SearchContextType {
+  search: string;
+  setSearch: Dispatch<SetStateAction<string>>;
+}
+
+export const SearchContext = createContext<SearchContextType>({
+  search: '',
+  setSearch: () => { },
+});
+
+interface ActiveCategoryContextType {
+  activeCategory: string;
+  setActiveCategory: Dispatch<SetStateAction<string>>;
+}
+
+export const ActiveCategoryContext = createContext<ActiveCategoryContextType>({
+  activeCategory: '',
+  setActiveCategory: () => { },
+});
 
 export default function () {
-
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("");
+
   return (
     <>
-      <div className='navi'>
-        <Navbar search={search} setSearch={setSearch} activeCategory={activeCategory} setActiveCategory={setActiveCategory}  />
-      </div>
-      {/* {search !== undefined && search} */}
-      {/* {activeCategory !== undefined && activeCategory} */}
-      <AttractionComponent search={search} activeCategory={activeCategory} />
+      <SearchContext.Provider value={{ search, setSearch }}>
+        <ActiveCategoryContext.Provider value={{ activeCategory, setActiveCategory }}>
+          <div className='navi'>
+            <Navbar />
+          </div>
+          <AttractionComponent search={search} activeCategory={activeCategory} />
+        </ActiveCategoryContext.Provider>
+      </SearchContext.Provider>
       <MapButton isMapModal={false} />
       <Footer />
     </>

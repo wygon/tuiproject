@@ -5,6 +5,7 @@ import LanguageModal from '~/components/LanguageModal';
 import NavbarSearchbarSmall from "./NavbarSearchbarSmall";
 import { TbBrandAirbnb } from "react-icons/tb";
 import { Link } from "react-router";
+import UserMenuDropdown from "../UserMenuDropdown";
 export default function NavbarSmall() {
     const [isLoginOpen, setIsLoginOpen] = useState(false);
     const [isLanguageModalShow, setIsLanguageModalShow] = useState(false);
@@ -29,25 +30,7 @@ export default function NavbarSmall() {
                                 onClick={() => setIsLanguageModalShow(true)}>
                                 <PiGlobe />
                             </button>
-
-                            <button className="btn-profile border border-1 rounded-pill d-flex align-items-center p-2"
-                                onClick={() => setIsLoginOpen(true)}
-                                onBlur={() => setIsLoginOpen(false)}
-                            >
-                                <PiArticleThin className="me-2" />
-                                <CgProfile />
-                            </button>
-                            {isLoginOpen && (
-                                <div className={`dropdown-menu position-absolute top-16 ${isLoginOpen && "show"}`}>
-                                    <p className="dropdown-item fw-bold">Zarejestruj się</p>
-                                    <p className="dropdown-item">Zaloguj się</p>
-                                    <hr />
-                                    <p className="dropdown-item">Karty podarunkowe</p>
-                                    <p className="dropdown-item">Wynajmij swój dom na Airbnb</p>
-                                    <p className="dropdown-item">Zostań gospodarzem atrakcji</p>
-                                    <p className="dropdown-item">Centrum pomocy</p>
-                                </div>
-                            )}
+                            <UserMenuDropdown />
                         </div>
                     </div>
                     <div className="col-xs-12 pt-3 d-flex d-sm-none align-items-center justify-content-center">

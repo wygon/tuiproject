@@ -9,6 +9,10 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "app/routes/airbnbcss/stylesheet.css";
+import { createContext, useState, type Dispatch, type SetStateAction } from "react";
+import { Button } from "react-bootstrap";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -41,8 +45,26 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
+interface LoginContextType {
+  userLogin : boolean;
+  setUserLogin : Dispatch<SetStateAction<boolean>>;
+}
+
+export const LoginContext = createContext<LoginContextType>({
+  userLogin : false,
+  setUserLogin: () => {},
+});
+
 export default function App() {
-  return <Outlet />;
+  const [userLogin, setUserLogin] = useState(false);
+
+  return <>
+  <LoginContext.Provider value={{ userLogin, setUserLogin }}>
+    {/* <h2>{!userLogin ? "zalogowano" : "wylogowano"} </h2> */}
+    {/* <Button variant={userLogin ? "danger" : "info"} onClick={() => setUserLogin(!userLogin)} >dsa</Button> */}
+    <Outlet />
+  </LoginContext.Provider>
+  </>
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

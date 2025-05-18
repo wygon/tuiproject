@@ -1,22 +1,22 @@
-import { useState, type MouseEventHandler } from "react";
-import { PiAirplaneInFlightDuotone } from "react-icons/pi";
+import { useContext } from "react";
 import type { Category } from "~/types/categorytype";
+import { ActiveCategoryContext } from "../routes/index";
 
 interface CategoryItemProps {
     category: Category;
     isActive : boolean; 
-    // onClick: MouseEventHandler<HTMLAnchorElement>
 }
 
 
-export default function CategoryItem({ category, activeCategory, isActive, setActiveCategory }: CategoryItemProps) {
+export default function CategoryItem({ category, isActive }: CategoryItemProps) {
     const Icon = category.icon;
-    
+    const ac = useContext(ActiveCategoryContext);
+
     const handleClick = () => {
-        if(activeCategory === category.id)
-            setActiveCategory("")    
+        if(ac.activeCategory === category.id)
+            ac.setActiveCategory("")    
         else
-            setActiveCategory(category.id);
+            ac.setActiveCategory(category.id);
 
     };
     

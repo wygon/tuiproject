@@ -1,21 +1,21 @@
-import { useEffect, useState, type ChangeEvent } from "react";
+import { useContext, useEffect, useState, type ChangeEvent } from "react";
 import { Card, Col, Container, Dropdown, DropdownButton, FormCheck, FormLabel, FormSelect, ListGroup, ListGroupItem, Row, Form, FloatingLabel, Button, Popover, OverlayTrigger, Spinner, Toast, Modal } from "react-bootstrap";
 import { BiDiamond } from "react-icons/bi";
 import { BsApple } from "react-icons/bs";
 import { FaFacebook } from "react-icons/fa";
 import { FaStar } from "react-icons/fa6";
 import { GrGoogle } from "react-icons/gr";
-import { MdEmail, MdOutlineEmail } from "react-icons/md";
-import { PiLessThanLight, PiMinus } from "react-icons/pi";
+import { MdOutlineEmail } from "react-icons/md";
+import { PiLessThanLight } from "react-icons/pi";
 import { useNavigate, useParams } from "react-router";
 import { attractions } from "~/categories/attractions";
 import type { AttractionCardType } from "~/types/attractiontype";
+import { LoginContext } from "~/root";
 
 export default function () {
     const { id, guests } = useParams();
     if (id != null) { var numberId = +id; }
     if (guests != null) { var numberGuests = +guests; }
-    const [login, setLogin] = useState(false);
     const [selectedPayment, setSelectedPayment] = useState('now');
     const [loading, setLoading] = useState(true);
     const [listing, setListing] = useState(0);
@@ -25,6 +25,8 @@ export default function () {
     const handlePaymentChange = (event: ChangeEvent<HTMLInputElement>) => {
         setSelectedPayment(event.target.value);
     };
+
+    const login = useContext(LoginContext);
 
     const navigate = useNavigate();
     const navigateToAttraction = () => {
@@ -89,11 +91,11 @@ export default function () {
                         <span className={`p-2 btn rounded-circle position-absolute left-2 translate-middle-x`} onClick={navigateToAttraction}><PiLessThanLight /></span>
                         <h2>Prośba o rezerwację</h2>
                         <Button
-                            variant={`${!login ? "success" : "danger"}`}
-                            onClick={() => setLogin(!login)}
+                            variant={`${!login.userLogin ? "success" : "danger"}`}
+                            onClick={() => login.setUserLogin(!login.userLogin)}
                             className="ms-5"
                         >
-                            {!login ? "Wyloguj" : "Zaloguj"}
+                            {!login.userLogin ? "Wyloguj" : "Zaloguj"}
                         </Button>
                     </div>
                     <Col xs="6" className="">
@@ -165,7 +167,7 @@ export default function () {
                             </Form>
                         </div>
                         <hr />
-                        <div className={`${!login && "d-none"}`}>
+                        <div className={`${!login.userLogin && "d-none"}`}>
                             <h4>Zaloguj się lub zarejestruj, aby zarezerwować ofertę</h4>
                             <ListGroup>
                                 {/* <ListGroupItem as={Form.Select}>
@@ -213,7 +215,7 @@ export default function () {
                                 </ListGroupItem>
                             </ListGroup>
                             <div className="fs-small"><small>Zadzwonimy lub wyślemy SMS-a, aby potwierdzić Twój numer. Obowiązują standardowe opłaty za wysyłanie wiadomości i transmisję danych. Polityka Prywatności</small></div>
-                            <Button variant="danger" className="w-100 mt-3 fw-500" onClick={() => setLogin(!login)}>Dalej</Button>
+                            <Button variant="danger" className="w-100 mt-3 fw-500" onClick={() => login.setUserLogin(!login.userLogin)}>Dalej</Button>
                             <div className="position-relative mt-4">
                                 <hr />
                                 <span className="position-absolute start-50 top-0 translate-middle bg-white rounded-circle p-2 fs-small">lub</span>
@@ -233,7 +235,7 @@ export default function () {
                                 <MdOutlineEmail className="h5 m-0 position-absolute start-4" /> <small className="fw-500">Użyj adresu e-mail</small>
                             </div>
                         </div>
-                        <div className={`${login && "d-none"}`}>
+                        <div className={`${login.userLogin && "d-none"}`}>
                             <Button
                                 variant="danger"
                                 // onClick={() => setShowConfirmToast(true)}

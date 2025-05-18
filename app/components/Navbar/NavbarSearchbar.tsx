@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IoIosSearch } from "react-icons/io";
+import { SearchContext } from "~/routes/index";
 
 interface NavbarSearchbarProps {
     activeSearchHome: boolean;
-    setSearch : string;
 }
-export default function NavbarSearchbar ({ activeSearchHome, setSearch } : NavbarSearchbarProps) {
+export default function NavbarSearchbar ({ activeSearchHome} : NavbarSearchbarProps) {
     const [searchBarActive, setSearchBarActive] = useState(false);
-
+    const search = useContext(SearchContext);
     return (
         <div className="search-bar bg-white rounded-pill d-sm-none d-md-flex"
             onFocus={() => setSearchBarActive(true)}
@@ -18,7 +18,7 @@ export default function NavbarSearchbar ({ activeSearchHome, setSearch } : Navba
                     <input id="kierunki" 
                     className="" 
                     placeholder="Wyszukaj kierunki" 
-                    onChange={(e) => setSearch(e.target.value)} 
+                    onChange={(e) => search.setSearch(e.target.value)} 
                     />
                 </label>
                 <div className="divider"></div>
