@@ -7,7 +7,6 @@ interface CategoryItemProps {
     isActive : boolean; 
 }
 
-
 export default function CategoryItem({ category, isActive }: CategoryItemProps) {
     const Icon = category.icon;
     const ac = useContext(ActiveCategoryContext);
@@ -17,7 +16,6 @@ export default function CategoryItem({ category, isActive }: CategoryItemProps) 
             ac.setActiveCategory("")    
         else
             ac.setActiveCategory(category.id);
-
     };
     
     return (
